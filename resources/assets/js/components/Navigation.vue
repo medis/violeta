@@ -1,16 +1,28 @@
 <template>
-  <nav class="navbar ">
+  <nav class="navbar">
     <div class="navbar-brand">
-      <div class="navbar-burger burger" data-target="navMenu">
+      <div class="navbar-burger burger" @click="showNav = !showNav" v-bind:class="{ 'is-active' : showNav }">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
 
-    <div id="navMenu" class="navbar-menu">
+    <div class="navbar-menu" v-bind:class="{ 'is-active' : showNav }">
       <router-link to="/" class="navbar-item">Home</router-link>
       <router-link to="/link2" class="navbar-item">Link2</router-link>
     </div>
   </nav>
 </template>
+
+<script>
+  export default {
+
+    data() {
+      return {
+        showNav: false
+      }
+    }
+
+  }
+</script>
