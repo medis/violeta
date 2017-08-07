@@ -1,13 +1,10 @@
 <template>
     <div>
-        <h1>Setup complete</h1>
+        <nav-menu></nav-menu>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
+    Vue.component('NavMenu', require('./Navigation.vue'));
 </script>
