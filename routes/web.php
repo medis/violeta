@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+// Point all non api links to SPA entry point.
+Route::get('/{vue?}', function () {
     return view('welcome');
-});
+})->where('vue', '^(?!.*api).*$[\/\w\.-]*');
