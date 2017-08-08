@@ -2,11 +2,12 @@
   a {
     text-align: center;
     display: block;
-    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
 
     &:hover, &:focus {
       background-color: transparent;
-      color: #FFF;
+      color: #000;
       text-decoration: underline;
     }
   }
@@ -22,7 +23,7 @@
 }
 
 .navbar-wrapper {
-  position: absolute;
+  position: fixed !important;
   top: 0;
   left: 0;
   right: 0;
@@ -34,16 +35,37 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #000;
     opacity: .5;
     z-index: 5;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+  }
+
+  a {
+    color: #000;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+  }
+
+  .navbar-item img {
+    max-height: 3.35rem;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+  }
+
+  &.collapsed {
+    .bg {
+      background: #000;
+    }
+
+    .navbar-item img {
+      max-height: 1.75rem;
+    }
+
+    a { color: #FFF; }
   }
 
   .container {
     z-index: 6;
   }
-}
-
-.navbar-item img {
-  max-height: 3.35rem;
 }

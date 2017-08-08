@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar-wrapper">
+  <div class="navbar-wrapper" v-bind:class="{ 'collapsed' : collapse }">
     <div class="bg"></div>
     <div class="container">
       <nav class="navbar">
@@ -28,7 +28,35 @@
 
     data() {
       return {
-        showNav: false
+        showNav: false,
+        last_known_scroll_position: 0,
+        ticking: false,
+        collapse: false
+      }
+    },
+
+    created() {
+      window.addEventListener('scroll', () => {
+        this.handleScroll()
+      });
+    },
+
+    methods: {
+      handleScroll() {
+        this.last_known_scroll_position = window.scrollY;
+        if (!this.ticking) {
+          window.requestAnimationFrame(() => {
+            if (this.last_known_scroll_position >= 10) {
+              this.collapse = true;
+            }
+            else {
+              this.collapse = false;
+            }
+
+            this.ticking = false;
+          });
+        }
+        this.ticking = true;
       }
     }
 
