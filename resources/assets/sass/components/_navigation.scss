@@ -2,5 +2,48 @@
   a {
     text-align: center;
     display: block;
+    color: #FFF;
+
+    &:hover, &:focus {
+      background-color: transparent;
+      color: #FFF;
+      text-decoration: underline;
+    }
   }
+  .is-1 a {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.navbar {
+  background: transparent;
+}
+
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: .5;
+    z-index: 5;
+  }
+
+  .container {
+    z-index: 6;
+  }
+}
+
+.navbar-item img {
+  max-height: 3.35rem;
 }

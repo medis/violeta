@@ -10,14 +10,11 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
+
 /**
  * Vue routes.
  */
-const FrontPage = {
-    render: function(createElement) {
-        return createElement('div', {}, 'Front Page');
-    }
-}
+var FrontPage = require('./components/views/FrontPage.vue');
 
 const routes = [
     { path: '/', component: FrontPage },
