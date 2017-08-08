@@ -11,6 +11,7 @@
         <title>Violeta Skya</title>
 
         <!-- Styles -->
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
         <!-- Scripts -->
