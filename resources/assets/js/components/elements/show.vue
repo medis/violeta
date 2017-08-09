@@ -1,8 +1,8 @@
 <template>
   <div class="media show">
 
-    <div class="columns">
-      <div class="column is-1 has-text-centered date is-size-6">
+    <div class="columns is-mobile">
+      <div class="column is-one-third-mobile is-one-third-tablet has-text-centered date is-size-6">
         <p>{{ formatDate('Do') }}</p>
         <p >{{ formatDate('MMM') }}</p>
       </div>
