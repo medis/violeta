@@ -1,0 +1,20 @@
+.show {
+  .venue {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .date {
+    height: 75px;
+    width: 75px;
+    background: green;
+    border-radius: 50%;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &.media .columns {
+    padding: 0.5rem 0;
+  }
+}
