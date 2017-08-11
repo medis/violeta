@@ -55,7 +55,7 @@ export default {
       if (val.type == 'youtube') {
         if (this.player === null) {
           this.player = new YT.Player('player', {
-            height: '390',
+            height: '360',
             width: '640',
             videoId: val.code,
             events: {
