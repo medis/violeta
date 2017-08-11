@@ -9,7 +9,7 @@
 
       <div class="column is-11 info">
         <p class="venue">{{ show.venue }}</p>
-        <p class="is-size-7">{{ show.address }}</p>
+        <p class="is-size-7"><span class="time">{{ formatDate('hh:mm A') }}</span>, {{ show.address }}</p>
       </div>
     </div>
 

@@ -2,7 +2,7 @@
   <section class="section">
     <h2 class="title is-4">Upcoming shows</h2>
 
-    <show v-for="show in shows" v-bind:key="id" :show="show"></show>
+    <show v-for="show in shows" :key="show.id" :show="show"></show>
   </section>
 </template>
 

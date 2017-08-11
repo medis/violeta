@@ -28,6 +28,7 @@
         </div>
 
         <!-- Scripts -->
+        <script src="https://www.youtube.com/iframe_api"></script>
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

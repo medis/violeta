@@ -32,9 +32,12 @@ const router = new VueRouter({
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ // VueJS instance for events.
+window.Event = new Vue();
+
 Vue.component('app', require('./components/App.vue'));
 
 const app = new Vue({
     el: '#app',
-    router,
+    router
 });

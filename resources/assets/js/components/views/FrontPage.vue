@@ -12,6 +12,7 @@
         </div>
 
         <div class="column">
+          <featured-video></featured-video>
         </div>
 
       </div>
@@ -24,4 +25,5 @@
   Vue.component('hero', require('../elements/hero.vue'));
   Vue.component('about', require('../elements/about.vue'));
   Vue.component('shows', require('../elements/shows.vue'));
+  Vue.component('FeaturedVideo', require('../elements/featuredVideo.vue'));
 </script>
