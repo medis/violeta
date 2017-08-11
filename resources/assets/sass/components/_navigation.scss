@@ -7,8 +7,12 @@
 
     &:hover, &:focus {
       background-color: transparent;
-      color: #000;
+      color: #FFF;
       text-decoration: underline;
+
+      @media all and (min-width: $desktop) {
+        color: #000;
+      }
     }
   }
   .is-1 a {
@@ -29,6 +33,13 @@
   right: 0;
   z-index: 5;
 
+  .navbar-burger {
+    &:hover { background-color: #969696; }
+    span {
+      background-color: #FFF;
+    }
+  }
+
   .bg {
     position: absolute;
     top: 0;
@@ -37,14 +48,23 @@
     bottom: 0;
     opacity: .5;
     z-index: 5;
+    background: #000;
     -webkit-transition: all 0.25s ease;
     transition: all 0.25s ease;
+
+    @media all and (min-width: $tablet) {
+      background: transparent;
+    }
   }
 
   a {
-    color: #000;
     -webkit-transition: all 0.25s ease;
     transition: all 0.25s ease;
+    color: #FFF;
+
+    @media all and (min-width: $desktop) {
+      color: #000;
+    }
   }
 
   .navbar-item img {

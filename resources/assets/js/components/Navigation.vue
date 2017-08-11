@@ -3,7 +3,7 @@
     <div class="bg"></div>
     <div class="container">
       <nav class="navbar">
-        <div class="navbar-brand">
+        <div class="navbar-brand is-hidden-tablet">
           <div class="navbar-burger burger" @click="showNav = !showNav" v-bind:class="{ 'is-active' : showNav }">
             <span></span>
             <span></span>
@@ -12,12 +12,12 @@
         </div>
 
         <div class="navbar-menu columns" v-bind:class="{ 'is-active' : showNav }">
-          <div class="column is-1 is-offset-3"><router-link to="/" class="navbar-item">Home</router-link></div>
-          <div class="column is-1"><router-link to="/bio" class="navbar-item">Bio</router-link></div>
-          <div class="column is-1"><router-link to="/media" class="navbar-item">Media</router-link></div>
-          <div class="column is-1"><router-link to="/photos" class="navbar-item">Photos</router-link></div>
-          <div class="column is-1"><router-link to="/shows" class="navbar-item">Shows</router-link></div>
-          <div class="column is-1"><router-link to="/contact" class="navbar-item">Contact</router-link></div>
+          <div class="column is-1 is-offset-3"><router-link to="/" class="navbar-item" @click.native="closeMenu()">Home</router-link></div>
+          <div class="column is-1"><router-link to="/bio" class="navbar-item" @click.native="closeMenu()">Bio</router-link></div>
+          <div class="column is-1"><router-link to="/media" class="navbar-item" @click.native="closeMenu()">Media</router-link></div>
+          <div class="column is-1"><router-link to="/photos" class="navbar-item" @click.native="closeMenu()">Photos</router-link></div>
+          <div class="column is-1"><router-link to="/shows" class="navbar-item" @click.native="closeMenu()">Shows</router-link></div>
+          <div class="column is-1"><router-link to="/contact" class="navbar-item" @click.native="closeMenu()">Contact</router-link></div>
         </div>
       </nav>
     </div>
@@ -58,6 +58,10 @@
           });
         }
         this.ticking = true;
+      },
+
+      closeMenu() {
+        this.showNav = false;
       }
     }
 

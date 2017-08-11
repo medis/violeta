@@ -23,7 +23,7 @@
               <div class="field">
                 <label class="label accessibly-hidden">Email</label>
                 <div class="control has-icons-left">
-                  <input class="input" type="text" placeholder="Your email" required>
+                  <input class="input" type="text" placeholder="Email" required>
                   <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                   </span>
