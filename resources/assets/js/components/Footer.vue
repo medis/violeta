@@ -8,6 +8,8 @@
           {{ new Date().getFullYear() }}
         </p>
 
+        <p>For bookings / enquiries please contact: <a href="mailto:wio.music@gmail.com">wio.music@gmail.com</a></p>
+
         <p>
           <a class="icon is-medium" href="#"><i class="fa fa-facebook-square"></i></a>
           <a class="icon is-medium" href="#"><i class="fa fa-twitter-square"></i></a>

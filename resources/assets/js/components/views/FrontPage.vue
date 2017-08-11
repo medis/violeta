@@ -1,5 +1,5 @@
 <template>
-  <div class="front">
+  <div class="page front">
 
     <hero></hero>
 

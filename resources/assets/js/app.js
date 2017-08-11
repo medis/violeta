@@ -16,9 +16,11 @@ Vue.use(VueRouter);
  * Vue routes.
  */
 var FrontPage = require('./components/views/FrontPage.vue');
+var ContactPage = require('./components/views/ContactPage.vue');
 
 const routes = [
     { path: '/', component: FrontPage },
+    { path: '/contact', component: ContactPage },
 ];
 
 const router = new VueRouter({

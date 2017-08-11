@@ -1,13 +1,15 @@
-section.hero {
-  background-image: url(/images/hero.jpg);
-  background-position: 78% 0%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: #fff;
-  position: relative;
+.page.front {
+  section.hero {
+    background-image: url(/images/hero.jpg);
+    background-position: 78% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    position: relative;
 
-  h2 {
-    padding: 0;
-    border: none;
+    h2 {
+      padding: 0;
+      border: none;
+    }
   }
 }
