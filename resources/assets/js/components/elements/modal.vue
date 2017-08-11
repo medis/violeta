@@ -3,10 +3,7 @@
     <div class="modal-background" @click="closeModal"></div>
     <div class="modal-content">
 
-      <div v-if="getType() === 'youtube'">
-        <iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/jqhgXAGP4Ho?enablejsapi=1&autoplay=1" frameborder="0" allowfullscreen></iframe>
-      </div>
-
+      <div id="player"></div>
 
     </div>
     <button class="modal-close is-large" @click="closeModal"></button>
@@ -26,7 +23,6 @@ export default {
 
   methods: {
     closeModal: function() {
-      console.log(this.player);
       this.player.stopVideo();
       Event.$emit('close');
     },
@@ -39,14 +35,40 @@ export default {
       return this.data.type;
     },
 
+    onPlayerReady: function() {
+      this.player.playVideo();
+    }
+
   },
 
   created() {
-    //https://developers.google.com/youtube/iframe_api_reference#loadVideoById
-    // https://developers.google.com/youtube/iframe_api_reference#Examples
-    this.player = new YT.Player('player');
-    console.log(this.player);
-  }
+    // Init Youtube api.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  },
 
+  watch: {
+    data: function(val, oldVal) {
+
+      if (val.type == 'youtube') {
+        if (this.player === null) {
+          this.player = new YT.Player('player', {
+            height: '390',
+            width: '640',
+            videoId: val.code,
+            events: {
+              'onReady': this.onPlayerReady
+            }
+          });
+        }
+        else {
+          this.player.loadVideoById(val.code, 0, 'hd720');
+        }
+      }
+
+    }
+  }
 }
 </script>
