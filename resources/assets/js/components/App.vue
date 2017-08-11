@@ -1,7 +1,9 @@
 <template>
     <div>
         <nav-menu></nav-menu>
-        <router-view></router-view>
+        <transition name="fade">
+            <router-view></router-view>
+        </transition>
         <site-footer></site-footer>
         <modal v-show="showModal" :data="modalData"></modal>
     </div>
