@@ -1,5 +1,6 @@
 <template>
     <div>
+        <social></social>
         <nav-menu></nav-menu>
         <transition name="fade">
             <router-view></router-view>
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+    Vue.component('Social', require('./Social.vue'));
     Vue.component('NavMenu', require('./Navigation.vue'));
     Vue.component('SiteFooter', require('./Footer.vue'));
     Vue.component('modal', require('./elements/modal.vue'));
