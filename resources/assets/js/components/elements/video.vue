@@ -5,7 +5,7 @@
 
       <div class="image is-4by3 has-text-centered">
         <a @click="openModal()">
-          <img src="https://img.youtube.com/vi/jqhgXAGP4Ho/0.jpg" />
+          <img :src="getUrl()" />
           <span class="icon play is-large"><i class="fa fa-play-circle-o" aria-hidden="true"></i></span>
         </a>
       </div>
@@ -33,6 +33,10 @@
           type: 'youtube',
           code: this.code
         })
+      },
+
+      getUrl() {
+        return "https://img.youtube.com/vi/" + this.code  +"/0.jpg";
       }
     }
   }

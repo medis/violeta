@@ -21,3 +21,30 @@
   </div>
 
 </template>
+
+<script>
+export default {
+
+  data() {
+    return {
+      videos: [
+        {
+          type: 'youtube',
+          code: 'jqhgXAGP4Ho'
+        },
+        {
+          type: 'youtube',
+          code: 'RbUMKenn5l8'
+        }
+      ],
+      music: [
+        {
+          type: 'soundcloud',
+          code: ''
+        }
+      ]
+    }
+  },
+
+}
+</script>
