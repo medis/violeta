@@ -1,7 +1,7 @@
 <template>
 
   <div class="page contact">
-    <small-hero>Media</small-hero>
+    <small-hero>Music and videos</small-hero>
     <div class="container">
       <section class="section">
 

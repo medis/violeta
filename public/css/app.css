@@ -1,4 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*! bulma.io v0.5.1 | MIT License | github.com/jgthms/bulma */
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/**
+ * The 7-1 Pattern by Hugo Giraudel
+ * http://sass-guidelin.es/#the-7-1-pattern
+ */
+
+/**
+ * Contains global mixins, functions, helper selectors, etc.
+ */
+
+/*! bulma.io v0.5.1 | MIT License | github.com/jgthms/bulma */
 
 @-webkit-keyframes spinAround {
   from {
@@ -5808,7 +5817,7 @@ a.dropdown-item.is-active {
   .modal-card {
     margin: 0 auto;
     max-height: calc(100vh - 40px);
-    width: 640px;
+    width: 1024px;
   }
 }
 
@@ -10058,4 +10067,332 @@ label.panel-block:hover {
   background-color: whitesmoke;
   padding: 3rem 1.5rem 6rem;
 }
+
+/**
+ * Contains 3rd-party styles, mixins, etc.
+ */
+
+/**
+ * Contains global styles, such as resets, typography, colors, etc.
+ */
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h2 {
+  border-bottom: 1px solid #868686;
+  padding-bottom: 0.7rem;
+}
+
+.accessibly-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.more {
+  line-height: 29px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: .25s;
+          transition-duration: .25s;
+}
+
+.fade-enter-active {
+  -webkit-transition-delay: .25s;
+          transition-delay: .25s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+/**
+ * Contains each self-contained component in its own .scss partial
+ */
+
+.navbar-menu a {
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.navbar-menu a:hover,
+.navbar-menu a:focus {
+  background-color: transparent;
+  color: #FFF;
+  text-decoration: underline;
+}
+
+@media all and (min-width: 1008px) {
+  .navbar-menu a:hover,
+  .navbar-menu a:focus {
+    color: #FFF;
+  }
+}
+
+.navbar-menu .is-1 a {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.navbar {
+  background: transparent;
+}
+
+.navbar-wrapper {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.navbar-wrapper .navbar-burger:hover {
+  background-color: #969696;
+}
+
+.navbar-wrapper .navbar-burger span {
+  background-color: #FFF;
+}
+
+.navbar-wrapper .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: .5;
+  z-index: 5;
+  background: #000;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+@media all and (min-width: 769px) {
+  .navbar-wrapper .bg {
+    background: transparent;
+  }
+}
+
+.navbar-wrapper a {
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  color: #FFF;
+  text-shadow: 0px 0px 10px #ffffff;
+}
+
+.navbar-wrapper .navbar-item img {
+  max-height: 3.35rem;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.navbar-wrapper.collapsed .bg {
+  background: #000;
+}
+
+.navbar-wrapper.collapsed .navbar-item img {
+  max-height: 1.75rem;
+}
+
+.navbar-wrapper.collapsed a {
+  color: #FFF;
+}
+
+.navbar-wrapper .container {
+  z-index: 6;
+}
+
+.page.front section.hero {
+  background-image: url(/images/hero.jpg);
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  position: relative;
+}
+
+.page.front section.hero h2 {
+  padding: 0;
+  border: none;
+}
+
+.show .venue {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.show .date {
+  height: 75px;
+  width: 75px;
+  background: green;
+  border-radius: 50%;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.show .time {
+  font-weight: bold;
+}
+
+.show.media .columns {
+  padding: 0.5rem 0;
+}
+
+.video .icon.play {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #FFF;
+  margin-left: -28px;
+}
+
+.comments-wrapper {
+  background: #FFF;
+}
+
+.comments-wrapper .box.comments {
+  width: 100%;
+}
+
+.youtube {
+  text-align: center;
+}
+
+.social {
+  position: fixed;
+  top: 50%;
+  right: -1px;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  z-index: 10;
+}
+
+.social a {
+  height: 64px;
+  width: 64px;
+  border: 1px solid #696969;
+  -webkit-box-shadow: 0px 0px 10px #ffffff;
+          box-shadow: 0px 0px 10px #ffffff;
+  color: #000;
+  background: transparent;
+  text-shadow: 0px 0px 10px #ffffff;
+  -webkit-transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.social a.facebook:hover,
+.social a.facebook:focus {
+  background: #3b5998;
+  color: #FFF;
+}
+
+.social a.twitter:hover,
+.social a.twitter:focus {
+  background: #1da1f2;
+  color: #FFF;
+}
+
+.social a.spotify:hover,
+.social a.spotify:focus {
+  background: #1db954;
+  color: #FFF;
+}
+
+.social a.soundcloud:hover,
+.social a.soundcloud:focus {
+  background: #ff8800;
+  color: #FFF;
+}
+
+.social ul li:nth-child(1) a,
+.social ul li:nth-child(2) a,
+.social ul li:nth-child(3) a {
+  border-bottom: none;
+}
+
+.social ul li:nth-child(1) a {
+  border-top-left-radius: 5px;
+}
+
+.social ul li:nth-child(4) a {
+  border-bottom-left-radius: 5px;
+}
+
+.image-wrapper {
+  line-height: 0;
+}
+
+.image-wrapper img {
+  border-radius: 5px;
+}
+
+.image-wrapper a {
+  position: relative;
+  display: block;
+}
+
+.image-wrapper .icon {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: #FFF;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.image-wrapper .bg {
+  opacity: 0;
+  background: #000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.image-wrapper a:hover .bg,
+.image-wrapper a:focus .bg {
+  opacity: 0.5;
+}
+
+.image-wrapper a:hover .icon,
+.image-wrapper a:focus .icon {
+  opacity: 0.5;
+}
+
+/**
+ * Contains page-specific styling, if necessary.
+ */
+
+/**
+ * Contains styling for larger layout components; e.g. nav, header, footer, etc.
+ */
+
+/**
+ * Contains styling for different themes.
+ */
 
