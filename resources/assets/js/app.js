@@ -18,10 +18,14 @@ Vue.use(VueRouter);
 var FrontPage = require('./components/views/FrontPage.vue');
 var ContactPage = require('./components/views/ContactPage.vue');
 var BioPage = require('./components/views/BioPage.vue');
+var MediaPage = require('./components/views/MediaPage.vue');
+var ShowsPage = require('./components/views/ShowsPage.vue');
 
 const routes = [
     { path: '/', component: FrontPage },
     { path: '/bio', component: BioPage },
+    { path: '/shows', component: ShowsPage },
+    { path: '/media', component: MediaPage },
     { path: '/contact', component: ContactPage },
 ];
 

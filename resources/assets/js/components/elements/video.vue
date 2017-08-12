@@ -4,7 +4,7 @@
     <div class="card-image">
 
       <div class="image is-4by3 has-text-centered">
-        <a @click="openModal('jqhgXAGP4Ho')">
+        <a @click="openModal()">
           <img src="https://img.youtube.com/vi/jqhgXAGP4Ho/0.jpg" />
           <span class="icon play is-large"><i class="fa fa-play-circle-o" aria-hidden="true"></i></span>
         </a>
@@ -25,11 +25,13 @@
 
 <script>
   export default {
+    props: ['code'],
+
     methods: {
-      openModal(elem) {
+      openModal() {
         Event.$emit('open', {
           type: 'youtube',
-          code: elem
+          code: this.code
         })
       }
     }
