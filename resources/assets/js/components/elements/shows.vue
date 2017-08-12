@@ -1,5 +1,6 @@
 <template>
   <section class="section">
+    <router-link to="/shows" title="view all shows" class="more is-pulled-right is-size-7">MORE SHOWS</router-link>
     <h2 class="title is-4">Upcoming shows</h2>
 
     <show v-for="show in shows" :key="show.id" :show="show"></show>

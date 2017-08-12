@@ -17,9 +17,11 @@ Vue.use(VueRouter);
  */
 var FrontPage = require('./components/views/FrontPage.vue');
 var ContactPage = require('./components/views/ContactPage.vue');
+var BioPage = require('./components/views/BioPage.vue');
 
 const routes = [
     { path: '/', component: FrontPage },
+    { path: '/bio', component: BioPage },
     { path: '/contact', component: ContactPage },
 ];
 
