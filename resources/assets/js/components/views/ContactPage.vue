@@ -40,7 +40,7 @@
           </div>
 
           <div class="control">
-            <button class="button is-primary">Contact</button>
+            <button class="button is-primary">Send</button>
           </div>
         </form>
       </section>
