@@ -7,9 +7,13 @@
 
         <div class="columns" v-for="images in chunkedImages">
             <div class="column" v-for="image in images">
-              <a @click="openModal(image)">
-                <img :src="image.images.low_resolution.url" />
-              </a>
+              <div class="box is-paddingless image-wrapper">
+                <a @click="openModal(image)">
+                  <img :src="image.images.low_resolution.url" />
+                  <div class="bg"></div>
+                  <span class="icon is-large"><i class="fa fa-eye" aria-hidden="true"></i></span>
+                </a>
+              </div>
           </div>
         </div>
 
