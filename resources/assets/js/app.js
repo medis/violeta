@@ -19,6 +19,7 @@ var FrontPage = require('./components/views/FrontPage.vue');
 var ContactPage = require('./components/views/ContactPage.vue');
 var BioPage = require('./components/views/BioPage.vue');
 var MediaPage = require('./components/views/MediaPage.vue');
+var PhotosPage = require('./components/views/PhotosPage.vue');
 var ShowsPage = require('./components/views/ShowsPage.vue');
 
 const routes = [
@@ -26,6 +27,7 @@ const routes = [
     { path: '/bio', component: BioPage },
     { path: '/shows', component: ShowsPage },
     { path: '/media', component: MediaPage },
+    { path: '/photos', component: PhotosPage },
     { path: '/contact', component: ContactPage },
 ];
 

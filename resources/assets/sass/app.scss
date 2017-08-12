@@ -2,8 +2,6 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
-// Import Bulma
-@import "node_modules/bulma/bulma";
 
 /**
  * The 7-1 Pattern by Hugo Giraudel
@@ -14,6 +12,10 @@
  * Contains global mixins, functions, helper selectors, etc.
  */
 @import 'utils/module';
+
+// Import bulma. Need to customise some variables in utils.
+// Import Bulma
+@import "node_modules/bulma/bulma";
 
 /**
  * Contains 3rd-party styles, mixins, etc.
