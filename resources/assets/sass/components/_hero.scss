@@ -1,7 +1,7 @@
 .page.front {
   section.hero {
     background-image: url(/images/hero.jpg);
-    background-position: 50% 0%;
+    background-position: 100% 0%;
     background-repeat: no-repeat;
     background-size: cover;
     color: #fff;
@@ -10,6 +10,21 @@
     h2 {
       padding: 0;
       border: none;
+    }
+
+    h1 {
+      font-family: Annabel1;
+      color: #fffbed;
+      font-size: 2.7rem;
+      letter-spacing: 0.35rem;
+      text-shadow: 0px 0px 40px #ffd7c7;
+
+      text-align: center;
+      line-height: 1.6;
+
+      @media all and (min-width: $tablet) {
+        text-align: left;
+      }
     }
   }
 }

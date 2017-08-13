@@ -1,19 +1,16 @@
 <template>
 
   <div class="page contact">
-    <small-hero>Music and videos</small-hero>
+    <small-hero>Music</small-hero>
     <div class="container">
       <section class="section">
 
-        <div class="tile is-ancestor">
-
-          <div class="tile">
-            <!-- Add content or other tiles -->
+        <div class="columns" v-for="videos in chunkedVideos">
+            <div class="column" v-for="video in videos">
+              <div class="box is-paddingless video-wrapper">
+                <single-video :data="video"></single-video>
+              </div>
           </div>
-          <div class="tile">
-            <!-- Add content or other tiles -->
-          </div>
-
         </div>
 
       </section>
@@ -30,19 +27,21 @@ export default {
       videos: [
         {
           type: 'youtube',
-          code: 'jqhgXAGP4Ho'
+          code: 'jqhgXAGP4Ho',
+          title: 'London Grammar - Rooting For You'
         },
         {
           type: 'youtube',
-          code: 'RbUMKenn5l8'
+          code: 'RbUMKenn5l8',
+          title: 'London Grammar - Big Picture'
         }
       ],
-      music: [
-        {
-          type: 'soundcloud',
-          code: ''
-        }
-      ]
+    }
+  },
+
+  computed: {
+    chunkedVideos() {
+      return chunk(this.videos, 4)
     }
   },
 

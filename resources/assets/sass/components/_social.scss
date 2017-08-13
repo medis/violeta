@@ -1,19 +1,57 @@
 .social {
   position: fixed;
-  top: 50%;
-  right: -1px;
-  transform: translate(0, -50%);
+
+  bottom: -1px;
+  top: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
   z-index: 10;
+
+  @media all and (min-width: $desktop) {
+    top: 50%;
+    right: -1px;
+    transform: translate(0, -50%);
+    z-index: 10;
+    bottom: auto;
+    left: auto;
+  }
+
+  ul li {
+    display: inline-block;
+    margin-left: -5px;
+    vertical-align: middle;
+
+    @media all and (min-width: $desktop) {
+      display: block;
+      margin-left: 0;
+    }
+  }
 
   a {
     height: 64px;
     width: 64px;
+    position: relative;
     border: 1px solid #696969;
     box-shadow: 0px 0px 10px #ffffff;
     color: #000;
     background: transparent;
     text-shadow: 0px 0px 10px #ffffff;
     transition: background 0.3s ease, color 0.3s ease;
+
+    .bg {
+      opacity: 0.5;
+    }
+
+    i {
+      position: relative;
+    }
+
+    &:hover, &:focus {
+      .bg {
+        opacity: 0;
+      }
+    }
   }
 
   a.facebook {
@@ -53,8 +91,18 @@
     border-top-left-radius: 5px;
   }
   ul li:nth-child(4) a {
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-bottom-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+
+    @media all and (min-width: $desktop) {
+      -webkit-border-bottom-left-radius: 5px;
+      -moz-border-radius-bottomleft: 5px;
+      border-bottom-left-radius: 5px;
+
+      -webkit-border-top-right-radius: 0;
+      -moz-border-radius-topright: 0;
+      border-top-right-radius: 0;
+    }
   }
 }
