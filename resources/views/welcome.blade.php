@@ -8,7 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <meta name="description" value="Violeta Skaya - singer and song writer">
-        <title>Violeta Skya</title>
+        <title>Violeta Skya - Singer and Songwriter</title>
 
         <!-- Styles -->
         <link rel="stylesheet" href="/css/font-awesome.min.css">
