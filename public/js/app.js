@@ -47737,7 +47737,7 @@ module.exports = Component.exports
 Vue.component('hero', __webpack_require__(157));
 Vue.component('about', __webpack_require__(159));
 Vue.component('shows', __webpack_require__(161));
-Vue.component('FeaturedVideo', __webpack_require__(166));
+Vue.component('FeaturedMusic', __webpack_require__(166));
 Vue.component('newsletter', __webpack_require__(172));
 
 /***/ }),
@@ -47785,10 +47785,18 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('section', {
     staticClass: "hero is-fullheight is-bold"
-  })
-},staticRenderFns: []}
+  }, [_c('div', {
+    staticClass: "hero-body"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('h1', {
+    staticClass: "title"
+  }, [_vm._v("\n        Violeta Skya\n      ")])])]), _vm._v(" "), _c('h2', [_vm._v("Singer & Songwriter")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -48054,9 +48062,9 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/www/violeta/resources/assets/js/components/elements/featuredVideo.vue"
+Component.options.__file = "/www/violeta/resources/assets/js/components/elements/featuredMusic.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] featuredVideo.vue: functional components are not supported with templates, they should use render functions.")}
+if (Component.options.functional) {console.error("[vue-loader] featuredMusic.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -48065,9 +48073,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5d67981f", Component.options)
+    hotAPI.createRecord("data-v-25358cc9", Component.options)
   } else {
-    hotAPI.reload("data-v-5d67981f", Component.options)
+    hotAPI.reload("data-v-25358cc9", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -48101,7 +48109,10 @@ Vue.component('SingleVideo', __webpack_require__(168));
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      code: 'jqhgXAGP4Ho'
+      data: {
+        code: 'jqhgXAGP4Ho',
+        title: 'London Grammar - Rooting For You'
+      }
     };
   }
 });
@@ -48179,17 +48190,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['code'],
+  props: ['data'],
 
   methods: {
     openModal: function openModal() {
       Event.$emit('open', {
         type: 'youtube',
-        code: this.code
+        code: this.data.code
       });
     },
     getUrl: function getUrl() {
-      return "https://img.youtube.com/vi/" + this.code + "/0.jpg";
+      return "https://img.youtube.com/vi/" + this.data.code + "/0.jpg";
     }
   }
 });
@@ -48215,7 +48226,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.getUrl()
     }
-  }), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _vm._m(1)])])
+  }), _vm._v(" "), _c('div', {
+    staticClass: "bg"
+  }), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c('div', {
+    staticClass: "card-content"
+  }, [_c('div', {
+    staticClass: "media"
+  }, [_c('div', {
+    staticClass: "media-content"
+  }, [_c('p', {
+    staticClass: "title is-5"
+  }, [_vm._v(_vm._s(this.data.title))])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('span', {
     staticClass: "icon play is-large"
@@ -48225,23 +48246,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-hidden": "true"
     }
   })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "card-content"
-  }, [_c('div', {
-    staticClass: "media"
-  }, [_c('div', {
-    staticClass: "media-content"
-  }, [_c('p', {
-    staticClass: "title is-5"
-  }, [_vm._v("London Grammar - Rooting For You")]), _vm._v(" "), _c('p', {
-    staticClass: "subtitle is-6"
-  }, [_c('a', {
-    attrs: {
-      "href": "https://www.youtube.com/channel/UCgX66nFZQodWgTeNIMF_4Rw",
-      "target": "_blank"
-    }
-  }, [_vm._v("LondonGrammarVEVO")])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -48261,16 +48265,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('router-link', {
     staticClass: "more is-pulled-right is-size-7",
     attrs: {
-      "to": "/media",
+      "to": "/music",
       "title": "view all media"
     }
-  }, [_vm._v("ALL MEDIA")]), _vm._v(" "), _c('h2', {
+  }, [_vm._v("ALL MUSIC")]), _vm._v(" "), _c('h2', {
     staticClass: "title is-4"
-  }, [_vm._v("Featured Video")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Featured Music")]), _vm._v(" "), _c('div', {
     staticClass: "content"
   }, [_c('single-video', {
     attrs: {
-      "code": _vm.code
+      "data": _vm.data
     }
   })], 1)], 1)
 },staticRenderFns: []}
@@ -48278,7 +48282,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-5d67981f", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-25358cc9", module.exports)
   }
 }
 
@@ -48386,7 +48390,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "column"
   }, [_c('about'), _vm._v(" "), _c('shows')], 1), _vm._v(" "), _c('div', {
     staticClass: "column"
-  }, [_c('featured-video'), _vm._v(" "), _c('newsletter')], 1)])])], 1)
+  }, [_c('featured-music'), _vm._v(" "), _c('newsletter')], 1)])])], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -48771,26 +48775,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       videos: [{
         type: 'youtube',
-        code: 'jqhgXAGP4Ho'
+        code: 'jqhgXAGP4Ho',
+        title: 'London Grammar - Rooting For You'
       }, {
         type: 'youtube',
-        code: 'RbUMKenn5l8'
-      }],
-      music: [{
-        type: 'soundcloud',
-        code: ''
+        code: 'RbUMKenn5l8',
+        title: 'London Grammar - Big Picture'
       }]
     };
+  },
+
+
+  computed: {
+    chunkedVideos: function chunkedVideos() {
+      return chunk(this.videos, 4);
+    }
   }
+
 });
 
 /***/ }),
@@ -48800,20 +48807,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "page contact"
-  }, [_c('small-hero', [_vm._v("Music and videos")]), _vm._v(" "), _vm._m(0)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_c('small-hero', [_vm._v("Music")]), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('section', {
     staticClass: "section"
-  }, [_c('div', {
-    staticClass: "tile is-ancestor"
-  }, [_c('div', {
-    staticClass: "tile"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "tile"
-  })])])])
-}]}
+  }, _vm._l((_vm.chunkedVideos), function(videos) {
+    return _c('div', {
+      staticClass: "columns"
+    }, _vm._l((videos), function(video) {
+      return _c('div', {
+        staticClass: "column"
+      }, [_c('div', {
+        staticClass: "box is-paddingless video-wrapper"
+      }, [_c('single-video', {
+        attrs: {
+          "data": video
+        }
+      })], 1)])
+    }))
+  }))])], 1)
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -49274,7 +49287,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "#",
       "target": "_blank"
     }
-  }, [_c('i', {
+  }, [_c('div', {
+    staticClass: "bg"
+  }), _c('i', {
     staticClass: "fa fa-facebook"
   })])]), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "icon twitter",
@@ -49282,7 +49297,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "#",
       "target": "_blank"
     }
-  }, [_c('i', {
+  }, [_c('div', {
+    staticClass: "bg"
+  }), _c('i', {
     staticClass: "fa fa-twitter"
   })])]), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "icon spotify",
@@ -49290,7 +49307,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "#",
       "target": "_blank"
     }
-  }, [_c('i', {
+  }, [_c('div', {
+    staticClass: "bg"
+  }), _c('i', {
     staticClass: "fa fa-spotify"
   })])]), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "icon soundcloud",
@@ -49298,7 +49317,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "#",
       "target": "_blank"
     }
-  }, [_c('i', {
+  }, [_c('div', {
+    staticClass: "bg"
+  }), _c('i', {
     staticClass: "fa fa-soundcloud"
   })])])])])
 }]}
@@ -49460,9 +49481,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'is-active': _vm.showNav
     }
   }, [_c('div', {
-    staticClass: "column is-1 is-offset-3"
+    staticClass: "column 1is-2"
   }, [_c('router-link', {
-    staticClass: "navbar-item",
+    staticClass: "navbar-item home",
     attrs: {
       "to": "/"
     },
@@ -49472,7 +49493,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("Home")])], 1), _vm._v(" "), _c('div', {
-    staticClass: "column is-1"
+    staticClass: "column 1is-2"
   }, [_c('router-link', {
     staticClass: "navbar-item",
     attrs: {
@@ -49484,7 +49505,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("Bio")])], 1), _vm._v(" "), _c('div', {
-    staticClass: "column is-1"
+    staticClass: "column 1is-2"
   }, [_c('router-link', {
     staticClass: "navbar-item",
     attrs: {
@@ -49496,7 +49517,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("Music")])], 1), _vm._v(" "), _c('div', {
-    staticClass: "column is-1"
+    staticClass: "column 1is-2"
   }, [_c('router-link', {
     staticClass: "navbar-item",
     attrs: {
@@ -49508,7 +49529,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("Photos")])], 1), _vm._v(" "), _c('div', {
-    staticClass: "column is-1"
+    staticClass: "column 1is-2"
   }, [_c('router-link', {
     staticClass: "navbar-item",
     attrs: {
@@ -49520,7 +49541,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("Shows")])], 1), _vm._v(" "), _c('div', {
-    staticClass: "column is-1"
+    staticClass: "column 1is-2"
   }, [_c('router-link', {
     staticClass: "navbar-item",
     attrs: {

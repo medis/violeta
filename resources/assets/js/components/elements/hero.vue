@@ -7,5 +7,6 @@
         </h1>
       </div>
     </div>
+    <h2>Singer & Songwriter</h2>
   </section>
 </template>

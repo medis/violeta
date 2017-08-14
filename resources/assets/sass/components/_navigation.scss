@@ -5,7 +5,7 @@
     text-transform: uppercase;
     font-weight: bold;
 
-    &:hover, &:focus {
+    &:hover, &:focus, &.router-link-exact-active:not(.home) {
       background-color: transparent;
       color: #FFF;
 

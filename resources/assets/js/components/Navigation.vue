@@ -12,7 +12,7 @@
         </div>
 
         <div class="navbar-menu columns" v-bind:class="{ 'is-active' : showNav }">
-          <div class="column 1is-2"><router-link to="/" class="navbar-item" @click.native="closeMenu()">Home</router-link></div>
+          <div class="column 1is-2"><router-link to="/" class="navbar-item home" @click.native="closeMenu()">Home</router-link></div>
           <div class="column 1is-2"><router-link to="/bio" class="navbar-item" @click.native="closeMenu()">Bio</router-link></div>
           <div class="column 1is-2"><router-link to="/music" class="navbar-item" @click.native="closeMenu()">Music</router-link></div>
           <div class="column 1is-2"><router-link to="/photos" class="navbar-item" @click.native="closeMenu()">Photos</router-link></div>
