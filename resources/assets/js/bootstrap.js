@@ -52,3 +52,5 @@ if (token) {
 
 window.moment = require('moment');
 window.chunk = require('chunk');
+
+// window.Form = require('./form');

@@ -1,25 +1,14 @@
 <template>
 
   <div class="page contact">
-    <small-hero>About me</small-hero>
+    <small-hero>About Violeta Skya</small-hero>
     <div class="container">
       <section class="section content">
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut massa elit, egestas sit amet ultricies nec, feugiat vitae enim. Maecenas nulla odio, consectetur in ultrices fermentum, egestas et nunc. Etiam nec dolor egestas, aliquam nunc elementum, condimentum arcu. Sed ac odio malesuada, ullamcorper lorem id, blandit arcu. Phasellus tellus diam, luctus id bibendum ac, suscipit at ex. Nam finibus pellentesque accumsan. Vivamus est arcu, interdum ac lectus in, tempus dictum leo. Sed facilisis mi lorem. Suspendisse luctus quis risus in facilisis. Sed accumsan mi vitae augue maximus, eget porttitor leo rhoncus.
-        </p>
-        <p>
-          Mauris sodales, lacus et blandit posuere, tellus nisi ultricies magna, at condimentum dolor augue ac purus. Suspendisse at quam nec justo suscipit malesuada. Etiam laoreet dapibus tincidunt. Fusce scelerisque porttitor sem, non laoreet arcu scelerisque vestibulum. Donec eget lorem id turpis dapibus sodales. Mauris eget tristique nisl, eu ultricies urna. Proin vel metus metus. Sed sollicitudin risus ac lacinia vulputate. Pellentesque ut libero ut elit iaculis pretium eget volutpat metus. Ut malesuada orci sem.
-        </p>
-        <p>
-          Aenean non lacus ornare, porttitor arcu id, tristique tellus. Vivamus in tincidunt enim, a consectetur tellus. Aenean aliquam, leo eget eleifend iaculis, enim ipsum pulvinar justo, ullamcorper vehicula libero orci eget lectus. Etiam pharetra mi ut ante malesuada, quis imperdiet arcu mollis. Aliquam erat volutpat. Suspendisse sit amet massa ut velit pharetra sagittis. Sed a leo nulla.
-        </p>
-        <p>
-          Nullam suscipit est in tellus molestie tristique. Sed nec gravida est. Aliquam tristique vel mauris sed feugiat. Donec dolor neque, egestas a consequat non, lacinia bibendum justo. Proin id tristique tellus. Donec eu libero sed dui fringilla eleifend sed ornare lectus. Nulla elementum interdum elit, sit amet finibus felis lacinia id. Curabitur arcu nulla, ultrices vitae pulvinar vel, vehicula non lectus. Praesent blandit tellus non ultricies rhoncus. Sed egestas, ligula eu ultrices interdum, augue purus congue diam, non consectetur ante dui ullamcorper velit. Nullam ante est, rhoncus pretium pharetra vitae, bibendum quis magna. Duis molestie, nunc vitae varius scelerisque, elit erat dictum magna, eget fermentum turpis sem eget ex. Aenean ullamcorper vehicula neque, in lobortis tellus viverra quis.
-        </p>
-        <p>
-          Ut sit amet pharetra dui. Sed posuere dignissim neque, eu fermentum sapien faucibus sit amet. Fusce semper accumsan ipsum, a convallis diam finibus non. Aenean condimentum dolor fermentum turpis ullamcorper, sed lacinia ligula pharetra. Aenean nec nibh eget sapien porttitor hendrerit eu at tellus. Aenean in neque non ligula ullamcorper iaculis. Integer venenatis, turpis eu accumsan pellentesque, ex diam posuere lorem, nec mattis lacus neque et nisl. Maecenas vel arcu a ante luctus suscipit. Nunc finibus scelerisque quam, et egestas velit rutrum ut. Nam ut tempus metus. Mauris eget pulvinar augue.
-        </p>
+        <p>Violeta Skya has proven yet again that not many artists have the persistence, drive, longevity and sheer sizzle that she does! Multi-lingual, with a diverse cultural background, the artist, born in Vilnius, Lithuania to Slavic parents, grew up surrounded by many different types of music. As a teenager, after years of music education, and training as a classical pianist, Violeta decided to become a full time musician and went to study pop and jazz vocals at Vilnius Conservatory. Many performance opportunities came along. At that time she performed a lot in various festivals and city concerts and started work as a session singer. Performing for large audiences at international contests in Europe, (winning several in Sweden, Spain and Latvia) enabled her to develop as an artist and stage performer. Concerts, jazz gigs and numerous function bookings have been her playground for an entire life.</p>
+        <p>During her vocal journey she has successfully sung a wide range of musical styles from jazz to rock. Moving to London in 2014 to take her musical development to the next level. Recently she finished her second degree on the BMus at BIMM London. The new life in the UK helped to channel her artistic expression and Violeta has found her niche and original sound, uniquely combining pop with r'n'b and dance music, creating a sexy, smart and glamorous vibe.  Violeta is known for her talents as a songwriter, topliner and memorable 'hook' maker. As a lyricist she emphasises the power of feeling.   A story behind lyrics is important for her and she puts a new message in every song. Emotional, often with a dark and edgy vibe, her songs and her versatile vocals leave audiences in a jaw-dropped state. They frequently introduce her music to their friends and encourage other followers to engage with her career.</p>
+        <p>At the moment Violeta is recording a lot of original material and is planning future releases. Her collaborations with established music producers, several of whom also work for record labels, have enabled her to network with management companies, which are now interested in her music.</p>
+        <p>Violeta believes music is a universal language that can speak to everyone. She highly values human relations, originality, self-expression, diversity, positivity and ambition.</p>
 
       </section>
     </div>

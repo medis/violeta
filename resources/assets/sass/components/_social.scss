@@ -78,10 +78,25 @@
       color: #FFF;
     }
   }
+  a.instagram {
+    &:hover, &:focus {
+      background: #405de6;
+      color: #FFF;
+    }
+  }
+  a.apple {
+    &:hover, &:focus {
+      background: #d6d6d6;
+      color: #FFF;
+    }
+  }
+
 
   ul li:nth-child(1) a,
   ul li:nth-child(2) a,
-  ul li:nth-child(3) a {
+  ul li:nth-child(3) a,
+  ul li:nth-child(4) a,
+  ul li:nth-child(5) a {
     border-bottom: none;
   }
 
@@ -90,7 +105,7 @@
     -moz-border-radius-topleft: 5px;
     border-top-left-radius: 5px;
   }
-  ul li:nth-child(4) a {
+  ul li:nth-child(6) a {
     -webkit-border-top-right-radius: 5px;
     -moz-border-radius-topright: 5px;
     border-top-right-radius: 5px;
