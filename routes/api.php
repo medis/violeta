@@ -20,3 +20,4 @@ use Illuminate\Http\Request;
 Route::get('/instagram', 'api\InstagramController@index');
 
 Route::post('/subscribe', 'api\SubscriptionController@store');
+Route::post('/contact', 'api\ContactController@store');
