@@ -51,7 +51,7 @@ export default {
       else if (videos.length == 3) {
         return 'is-4';
       }
-      else if (videos.length == 3) {
+      else if (videos.length == 4) {
         return 'is-3';
       }
     }
