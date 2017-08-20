@@ -14,6 +14,12 @@
             <span class="help is-danger" v-if="form.errors.has('email')" v-text="form.errors.get('email')"></span>
           </div>
         </div>
+        <div class="field is-hidden">
+          <label class="label accessibly-hidden">I agree to terms of service</label>
+          <div class="control">
+            <input type="checkbox" name="term_of_service" v-model="form.term_of_service" />
+          </div>
+        </div>
         <div class="control">
           <button class="button is-primary" :class="button_class">Subscribe</button>
         </div>
@@ -31,6 +37,7 @@
       return {
         form: new Form({
           email: '',
+          term_of_service: ''
         }),
         button_class: ''
       }

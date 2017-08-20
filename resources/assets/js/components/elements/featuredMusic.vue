@@ -17,8 +17,8 @@
     data() {
       return {
         data: {
-          code: 'jqhgXAGP4Ho',
-          title: 'London Grammar - Rooting For You'
+          code: '-1W2nkMVgYo',
+          title: 'Violeta Skya - Kiss Me (Teaser)'
         }
       }
     }

@@ -14,6 +14,11 @@ class SubscriptionController extends Controller
         'email' => "required|email",
     ]);
 
+    // Do nothing if bot ticked the checkbox.
+    if ($request->term_of_service) {
+      return;
+    }
+
     Newsletter::subscribe($request->email);
   }
 

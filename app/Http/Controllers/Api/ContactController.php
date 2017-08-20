@@ -18,6 +18,11 @@ class ContactController extends Controller
       'message' => "required",
     ]);
 
+    // Do nothing if bot ticked the checkbox.
+    if ($request->term_of_service) {
+      return;
+    }
+
     $emails = explode(',', config('app.MAIL_TO'));
     if (!empty($emails)) {
       $contact = new Contact($request->all());

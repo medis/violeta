@@ -42,6 +42,13 @@
             </div>
           </div>
 
+          <div class="field is-hidden">
+            <label class="label accessibly-hidden">I agree to terms of service</label>
+            <div class="control">
+              <input type="checkbox" name="term_of_service" v-model="form.term_of_service" />
+            </div>
+          </div>
+
           <div class="control">
             <button class="button is-primary" :class="button_class">Send</button>
           </div>
@@ -63,7 +70,8 @@
         form: new Form({
           email: '',
           name: '',
-          message: ''
+          message: '',
+          term_of_service: false
         }),
         button_class: ''
       }
