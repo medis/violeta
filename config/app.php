@@ -5,7 +5,7 @@ return [
     'MAIL_FROM' => env('MAIL_FROM'),
     'MAIL_TO' => env('MAIL_TO'),
     'MAIL_NAME' => env('MAIL_NAME'),
-    
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -183,7 +183,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Newsletter\NewsletterServiceProvider::class,
-
+        JeroenG\Flickr\FlickrServiceProvider::class,
     ],
 
     /*
@@ -235,7 +235,7 @@ return [
 
         'Fractal' => Spatie\Fractal\FractalFacade::class,
         'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
-
+        'Flickr' => JeroenG\Flickr\FlickrLaravelFacade::class,
     ],
 
 ];

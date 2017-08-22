@@ -4,7 +4,7 @@ namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
 
-class InstagramTransformer extends TransformerAbstract
+class FlickrTransformer extends TransformerAbstract
 {
     /**
      * A Fractal transformer.
@@ -14,8 +14,9 @@ class InstagramTransformer extends TransformerAbstract
     public function transform($data)
     {
         return [
-            'images' => $data['images'],
-            'comments' => $data['comments']['data']
+            'thumbnail' => $data['url_s'],
+            'image'     => $data['url_z'],
+            'original'  => $data['url_o']
         ];
     }
 }

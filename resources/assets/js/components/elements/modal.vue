@@ -7,18 +7,12 @@
         <div id="player"></div>
       </div>
 
-      <div v-show="isType('instagram')">
+      <div v-show="isType('flickr')">
           <div class="columns">
-            <div class="column is-8 is-paddingless" :class="!this.image.comments.length ? 'is-offset-2' : ''">
+            <div class="column is-8 is-offset-2 is-paddingless">
                 <figure class="image">
-                <img :src="this.image.images.standard_resolution.url" />
+                <img :src="this.image.image" />
               </figure>
-            </div>
-
-            <div class="column comments-wrapper is-4 is-paddingless" v-if="this.image.comments.length">
-              <div class="box comments is-shadowless is-radiusless">
-                <comment v-for="comment in this.image.comments" :comment="comment" :key="comment.id"></comment>
-              </div>
             </div>
           </div>
       </div>
@@ -37,8 +31,9 @@ export default {
     return {
       player: null,
       image: {
-        images: {standard_resolution: {url: ''}},
-        comments: []
+        thumbnail: '',
+        image: '',
+        original: ''
       }
     }
   },
@@ -101,7 +96,7 @@ export default {
         }
       }
 
-      if (val.type == 'instagram') {
+      if (val.type == 'flickr') {
         this.image = val.data;
       }
     }

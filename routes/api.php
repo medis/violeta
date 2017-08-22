@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::get('/instagram', 'api\InstagramController@index');
+Route::get('/flickr', 'api\FlickrController@index');
 
 Route::post('/subscribe', 'api\SubscriptionController@store');
 Route::post('/contact', 'api\ContactController@store');
