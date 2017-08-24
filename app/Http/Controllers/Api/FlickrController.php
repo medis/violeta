@@ -20,7 +20,7 @@ class FlickrController extends Controller
     protected $flickr;
 
     public function __construct() {
-        $this->flickr = new Flickr(new FlickerApi(env('FLICKR_KEY'), 'php_serial'));
+        $this->flickr = new Flickr(new FlickerApi(config('app.FLICKR_KEY'), 'php_serial'));
     }
 
     public function index($page = null) {
