@@ -34,6 +34,7 @@ class ContactMail extends Mailable
     {
         return $this->from(config('app.MAIL_FROM'))
             ->subject('VioletaSkya Contact Message')
-            ->view('emails.contact');
+            ->view('emails.contact')
+            ->text('emails.contact_plain');
     }
 }
