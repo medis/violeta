@@ -15,32 +15,22 @@
       </div>
       <div v-else>Soon</div>
     </div>
-    
+
   </section>
 </template>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   import ContentPlaceholder from 'vue-content-placeholder';
 
   Vue.component('show', require('./show.vue'));
   export default {
+    computed: mapGetters({
+      shows: 'mostRecentShows',
+      ready: 'showsReady'
+    }),
     data() {
       return {
-        ready: false,
-        shows: [
-          // {
-          //   id: 1,
-          //   date: moment("2017-08-25 23:00"),
-          //   venue: 'The Half Moon',
-          //   address: '93 Lower Richmond Rd, London SW15 1EU'
-          // },
-          // {
-          //   id: 2,
-          //   date: moment("2017-09-01 21:00"),
-          //   venue: 'King\'s College London',
-          //   address: 'Strand, London WC2R 2LS'
-          // }
-        ],
         placeholderRows: [
           {
             height: '15px',

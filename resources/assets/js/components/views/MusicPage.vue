@@ -27,8 +27,8 @@ export default {
       videos: [
         {
           type: 'youtube',
-          code: '-1W2nkMVgYo',
-          title: 'Violeta Skya - Kiss Me (Teaser)'
+          code: 'sVPXDGCYl8s',
+          title: 'Violeta Skya - Kiss Me'
         }
       ],
     }

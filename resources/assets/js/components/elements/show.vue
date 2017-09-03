@@ -22,7 +22,7 @@
 
     methods: {
       formatDate(format) {
-        return this.show.date.format(format);
+        return moment(this.show.date).format(format);
       }
     }
   }

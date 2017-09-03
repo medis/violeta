@@ -80,5 +80,3 @@ const app = new Vue({
     router,
     store
 });
-
-//https://github.com/barryvdh/laravel-cors
