@@ -22,7 +22,9 @@ export default {
 
   methods: {
     fetchPage(link) {
-      Event.$emit(this.parentName + "_changePage", link);
+      if (link !== undefined) {
+        Event.$emit(this.parentName + "_changePage", link);
+      }
     }
   }
 }

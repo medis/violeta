@@ -1,4 +1,3 @@
-// import shop from '../../api/shop'
 import * as vars from '../vars'
 
 // initial state

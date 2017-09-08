@@ -29,6 +29,7 @@
             Event.$on('open', (data) => this.openDialog(data) );
 
             this.$store.dispatch('getAllShows');
+            this.$store.dispatch('getAllPress');
         },
 
         methods: {

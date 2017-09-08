@@ -12,12 +12,13 @@
         </div>
 
         <div class="navbar-menu columns" v-bind:class="{ 'is-active' : showNav }">
-          <div class="column 1is-2"><router-link to="/" class="navbar-item home" @click.native="closeMenu()">Home</router-link></div>
-          <div class="column 1is-2"><router-link to="/bio" class="navbar-item" @click.native="closeMenu()">Bio</router-link></div>
-          <div class="column 1is-2"><router-link to="/music" class="navbar-item" @click.native="closeMenu()">Music</router-link></div>
-          <div class="column 1is-2"><router-link to="/photos" class="navbar-item" @click.native="closeMenu()">Photos</router-link></div>
-          <div class="column 1is-2"><router-link to="/shows" class="navbar-item" @click.native="closeMenu()">Shows</router-link></div>
-          <div class="column 1is-2"><router-link to="/contact" class="navbar-item" @click.native="closeMenu()">Contact</router-link></div>
+          <div class="column"><router-link to="/" class="navbar-item home" @click.native="closeMenu()">Home</router-link></div>
+          <div class="column"><router-link to="/bio" class="navbar-item" @click.native="closeMenu()">Bio</router-link></div>
+          <div class="column"><router-link to="/music" class="navbar-item" @click.native="closeMenu()">Music</router-link></div>
+          <div class="column"><router-link to="/photos" class="navbar-item" @click.native="closeMenu()">Photos</router-link></div>
+          <div class="column"><router-link to="/shows" class="navbar-item" @click.native="closeMenu()">Shows</router-link></div>
+          <div class="column"><router-link to="/press" class="navbar-item" @click.native="closeMenu()">Press</router-link></div>
+          <div class="column"><router-link to="/contact" class="navbar-item" @click.native="closeMenu()">Contact</router-link></div>
         </div>
       </nav>
     </div>

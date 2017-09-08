@@ -43,6 +43,7 @@ var BioPage = require('./components/views/BioPage.vue');
 var MusicPage = require('./components/views/MusicPage.vue');
 var PhotosPage = require('./components/views/PhotosPage.vue');
 var ShowsPage = require('./components/views/ShowsPage.vue');
+var PressPage = require('./components/views/PressPage.vue');
 
 const routes = [
     { path: '/', component: FrontPage },
@@ -51,6 +52,7 @@ const routes = [
     { path: '/music', component: MusicPage },
     { path: '/photos', component: PhotosPage },
     { path: '/contact', component: ContactPage },
+    { path: '/press', component: PressPage },
 ];
 
 const router = new VueRouter({
