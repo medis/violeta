@@ -31,12 +31,12 @@
       openModal() {
         Event.$emit('open', {
           type: 'youtube',
-          code: this.data.code
+          code: this.data.source
         })
       },
 
       getUrl() {
-        return "https://img.youtube.com/vi/" + this.data.code  +"/0.jpg";
+        return "https://img.youtube.com/vi/" + this.data.source  +"/0.jpg";
       }
     }
   }

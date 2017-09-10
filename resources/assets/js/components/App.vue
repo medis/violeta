@@ -30,6 +30,7 @@
 
             this.$store.dispatch('getAllShows');
             this.$store.dispatch('getAllPress');
+            this.$store.dispatch('getAllMusic');
         },
 
         methods: {
