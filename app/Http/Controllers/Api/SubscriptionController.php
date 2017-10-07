@@ -10,7 +10,7 @@ class SubscriptionController extends Controller
 {
 
   public function store(Request $request) {
-    $this->validate($request, [
+    $post = $request->validate([
         'email' => "required|email",
     ]);
 
@@ -19,7 +19,7 @@ class SubscriptionController extends Controller
       return;
     }
 
-    Newsletter::subscribe($request->email);
+    Newsletter::subscribe($post['email']);
   }
 
 }

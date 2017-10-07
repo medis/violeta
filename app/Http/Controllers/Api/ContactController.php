@@ -12,7 +12,7 @@ class ContactController extends Controller
 {
 
   public function store(Request $request) {
-    $this->validate($request, [
+    $post = $request->validate([
       'email'   => "required|email",
       'name'    => "required",
       'message' => "required",
@@ -25,7 +25,7 @@ class ContactController extends Controller
 
     $emails = explode(',', config('app.MAIL_TO'));
     if (!empty($emails)) {
-      $contact = new Contact($request->all());
+      $contact = new Contact($post);
 
       foreach ($emails as $email) {
         Mail::to($email)->send(new ContactMail($contact));
