@@ -20,7 +20,7 @@
 
             <div class="columns">
               <div class="column is-6 is-offset-3">
-                <pagination :pagination="pagination" :parentName="id"></pagination>
+                <pagination :pagination="pagination" :links="links" :parentName="id"></pagination>
               </div>
             </div>
           </div>
@@ -49,6 +49,7 @@
     computed: mapGetters({
       shows: 'allShows',
       pagination: 'showsPager',
+      links: 'showsLinks',
       ready: 'showsReady'
     }),
 

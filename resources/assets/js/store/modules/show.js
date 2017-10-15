@@ -5,13 +5,15 @@ const state = {
   ready: false,
   shows: [],
   latestShows: [],
-  meta: []
+  meta: [],
+  links: []
 }
 
 // getters
 const getters = {
   allShows: state => state.shows,
-  showsPager: state => state.meta.pagination,
+  showsPager: state => state.meta,
+  showsLinks: state => state.links,
   mostRecentShows: state => state.latestShows,
   showsReady: state => state.ready
 }
@@ -47,18 +49,17 @@ const mutations = {
     // Page can be changed in Shows page but latest shows should never change.
     state.latestShows = !state.latestShows.length ? shows.data.data.slice(0, 3) : state.latestShows;
     state.meta = shows.data.meta;
+    state.links = shows.data.links;
     state.ready = true;
   },
 
   ['DISABLE_SHOWS'] (state) {
     state.shows = [];
     state.meta = [];
+    state.links = [];
     state.ready = false;
   }
 
-  // [types.ADD_TO_CART] (state, { id }) {
-  //   state.all.find(p => p.id === id).inventory--
-  // }
 }
 
 export default {

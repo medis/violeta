@@ -32,7 +32,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import ContentPlaceholder from 'vue-content-placeholder';
-Vue.component('pagination', require('../elements/pagination.vue'));
 
 export default {
   created() {
@@ -42,7 +41,6 @@ export default {
   computed: {
     ...mapGetters({
       music: 'allMusic',
-      pagination: 'musicPager',
       ready: 'musicReady'
     }),
     chunkedVideos() {

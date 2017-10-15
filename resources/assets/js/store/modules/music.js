@@ -5,13 +5,15 @@ const state = {
   ready: false,
   music: [],
   featuredSong: [],
-  meta: []
+  meta: [],
+  links: []
 }
 
 // getters
 const getters = {
   allMusic: state => state.music,
-  musicPager: state => state.meta.pagination,
+  musicPager: state => state.meta,
+  musicLinks: state => state.links,
   featuredSong: state => state.featuredSong,
   musicReady: state => state.ready
 }
@@ -43,12 +45,14 @@ const mutations = {
     // Page can be changed in Music page but featured song needs to perist.
     state.featuredSong = !state.featuredSong.length ? music.data.data[0] : state.featuredSong;
     state.meta = music.data.meta;
+    state.links = music.data.links;
     state.ready = true;
   },
 
   ['DISABLE_MUSIC'] (state) {
     state.music = [];
     state.meta = [];
+    state.links = [];
     state.ready = false;
   }
 }

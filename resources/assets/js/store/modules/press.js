@@ -4,13 +4,15 @@ import * as vars from '../vars'
 const state = {
   ready: false,
   press: [],
-  meta: []
+  meta: [],
+  links: []
 }
 
 // getters
 const getters = {
   allPress: state => state.press,
-  pressPager: state => state.meta.pagination,
+  pressPager: state => state.meta,
+  pressLinks: state => state.links,
   pressReady: state => state.ready
 }
 
@@ -19,6 +21,7 @@ const actions = {
   getAllPress ({ commit }) {
     axios.get(vars.API_LINK + 'press')
       .then(press => {
+        console.log(press);
         commit('ADD_PRESS', { press })
       });
   },
@@ -38,12 +41,14 @@ const mutations = {
   ['ADD_PRESS'] (state, { press }) {
     state.press = press.data.data;
     state.meta = press.data.meta;
+    state.links = press.data.links;
     state.ready = true;
   },
 
   ['DISABLE_PRESS'] (state) {
     state.press = [];
     state.meta = [];
+    state.links = [];
     state.ready = false;
   }
 }
