@@ -21,7 +21,6 @@ const actions = {
   getAllPress ({ commit }) {
     axios.get(vars.API_LINK + 'press')
       .then(press => {
-        console.log(press);
         commit('ADD_PRESS', { press })
       });
   },
