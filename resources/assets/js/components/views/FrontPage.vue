@@ -9,6 +9,7 @@
         <div class="column">
           <about></about>
           <shows></shows>
+          <radios></radios>
         </div>
 
         <div class="column">
@@ -26,6 +27,7 @@
   Vue.component('hero', require('../elements/hero.vue'));
   Vue.component('about', require('../elements/about.vue'));
   Vue.component('shows', require('../elements/shows.vue'));
+  Vue.component('radios', require('../elements/radios.vue'));
   Vue.component('FeaturedMusic', require('../elements/featuredMusic.vue'));
   Vue.component('newsletter', require('../elements/newsletter.vue'));
 </script>
