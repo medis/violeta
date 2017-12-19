@@ -8,8 +8,10 @@
 
     <div v-if="ready">
       <div v-if="radios.length">
-        <div v-for="radio in radios" :key="radio.id" class="media radio">
-          <a :href="radio.link" target="_blank">{{ radio.title }}</a>
+        <div class="columns is-multiline">
+          <div v-for="radio in radios" :key="radio.id" class="media radio column is-half">
+            <a :href="radio.link" target="_blank">{{ radio.title }}</a>
+          </div>
         </div>
       </div>
       <div v-else>Soon</div>
