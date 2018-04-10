@@ -1,0 +1,23 @@
+version: "3"
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  app:
+    image: audriusbuk/violeta
+    container_name: violeta
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    env_file:
+      - .docker.env
+    volumes:
+      - .:/var/www/html
+    networks:
+      - app-tier
+    ports:
+      - 80:80
+    environment:
+      APP_ENV: local
+      CONTAINER_ROLE: app
