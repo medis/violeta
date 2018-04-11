@@ -16,21 +16,21 @@ RUN apt-get update \
     && pecl install apcu xdebug-2.6.0 \
     && docker-php-ext-enable apcu xdebug
 
-COPY docker/php/php-fpm.d/docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
-COPY docker/php/conf.d/*.ini /usr/local/etc/php/conf.d/
-COPY docker/php/php.ini /usr/local/etc/php/php.ini
+COPY docker/app/php/php-fpm.d/docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+COPY docker/app/php/conf.d/*.ini /usr/local/etc/php/conf.d/
+COPY docker/app/php/php.ini /usr/local/etc/php/php.ini
 
-COPY docker/nginx/h5bp /etc/nginx/h5bp
+COPY docker/app/nginx/h5bp /etc/nginx/h5bp
 
-COPY docker/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
-COPY docker/supervisor/conf.d/*.conf /etc/supervisor/conf.d-available/
+COPY docker/app/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+COPY docker/app/supervisor/conf.d/*.conf /etc/supervisor/conf.d-available/
 
-COPY docker/run-app.sh /usr/local/bin/run-app
-COPY docker/php/composer-installer.sh /usr/local/bin/composer-installer
+COPY docker/app/run-app.sh /usr/local/bin/run-app
+COPY docker/app/php/composer-installer.sh /usr/local/bin/composer-installer
 
 ADD https://github.com/kelseyhightower/confd/releases/download/v0.11.0/confd-0.11.0-linux-amd64 /usr/local/bin/confd
-COPY docker/confd/conf.d/ /etc/confd/conf.d/
-COPY docker/confd/templates/ /etc/confd/templates/
+COPY docker/app/confd/conf.d/ /etc/confd/conf.d/
+COPY docker/app/confd/templates/ /etc/confd/templates/
 
 RUN chmod +x /usr/local/bin/confd \
     && chmod +x /usr/local/bin/run-app \
