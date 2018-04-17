@@ -11,5 +11,9 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('home');
+
 // Point all non api links to SPA entry point.
 Route::view('/{vue?}', 'welcome')->where('vue', '^(?!.*api).*$[\/\w\.-]*');
