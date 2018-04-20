@@ -13,15 +13,27 @@
         <!-- Styles -->
         <link href="{{ mix('css/backend.css') }}" rel="stylesheet">
     </head>
-    <body class="h-full bg-grey-lighter">
+    <body class="h-full flex flex-row bg-grey-lighter">
 
-        <div class="flex h-full">
+            @auth
+                <div class="flex h-full w-1/6">
+                    @include('backend.menu')
+                </div>
+            @endauth
 
-            @include('backend.menu')
+            <div class="flex flex-col w-full">
 
-            <div class="p-4">
-                @yield('content')
+                @auth
+
+                <div class="p-4 text-lg bg-white border-b border-grey">
+                    @yield('toolbar')
+                </div>
+
+                @endauth
+
+                <div class="p-4 w-full h-full">
+                    @yield('content')
+                </div>
             </div>
-        </div>
     </body>
 </html>
