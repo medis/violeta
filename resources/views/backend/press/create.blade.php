@@ -1,9 +1,9 @@
 @extends('layouts.backend')
 
-@section('page_title')
-    Create Press article
+@section('toolbar')
+    {{ $vars['page_title'] }}
 @endsection
 
 @section('content')
-    @include('press.form', ['vars' => $vars])
+    @include('backend.press.form', ['vars' => $vars])
 @endsection

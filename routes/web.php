@@ -13,9 +13,14 @@
 
 Auth::routes();
 
-Route::group(['namespace' => 'Backend', 'prefix' => 'dashboard', 'as' => 'backend.', 'middleware' => ['auth','web']] , function() {
-  Route::get('/', 'DashboardController@index')->name('home');
-  Route::resource('press', 'PressController');
+Route::middleware(['auth','web'])
+    ->namespace('Backend')
+    ->prefix('dashboard')
+    ->as('backend.')
+    ->group(function() {
+
+      Route::get('/', 'DashboardController@index')->name('home');
+      Route::resource('press', 'PressController');
 });
 
 // Point all non api links to SPA entry point.

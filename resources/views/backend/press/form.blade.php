@@ -1,10 +1,14 @@
-@include('partials.errors')
-
-@section('page_title')
-    {{ $vars['page_title'] }}
+@section('toolbar')
+    @if ($vars['entity']->id)
+        {{ Form::open(['method' => 'DELETE', 'url' => $vars['entity']->url->delete]) }}
+            {{ Form::submit('Delete') }}
+        {{ Form::close() }}
+    @endif
 @endsection
 
-{!! Form::model($blog, ['route' => ['blog.update', $blog], 'method' => 'put']) !!}
+@include('backend.partials.errors')
+
+{!! Form::model($vars['entity'], ['url' => $vars['route'], 'method' => 'post']) !!}
 
 <div class="row">
 
@@ -32,7 +36,7 @@
     <div class="col-sm-8">
         <div class="form-group date">
             {{ Form::label('date', 'Date') }}
-            {{ Form::date('date', Carbon\Carbon::parse($blog->date)->format('Y-m-d'), ['class' => 'form-control', 'required']) }}
+            {{ Form::date('date', Carbon\Carbon::parse($vars['entity']->date)->format('Y-m-d'), ['class' => 'form-control', 'required']) }}
         </div>
     </div>
 
@@ -53,13 +57,3 @@
     </div>
 </div>
 {!! Form::close() !!}
-
-{{ Form::open(['method' => 'DELETE', 'route' => ['blog.destroy', $blog->id]]) }}
-<div class="row float-right">
-    <div class="col-sm-12">
-        <div class="form-group delete negative-margin">
-            {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-        </div>
-    </div>
-</div>
-{{ Form::close() }}
