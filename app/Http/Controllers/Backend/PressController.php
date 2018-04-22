@@ -61,4 +61,37 @@ class PressController extends Controller
 
         return redirect($this->press->url->index)->with('status', 'Press created.');
     }
+
+    public function edit(Press $press)
+    {
+        $vars = [
+            'entity' => $press,
+            'page_title' => 'Edit Press article',
+            'route' => $press->url->update
+        ];
+
+        return view('backend.press.edit', compact('vars'));
+    }
+
+    public function update(Press $press)
+    {
+        $payload = $this->request->validate([
+            'title' => 'required',
+            'source' => 'required',
+            'link' => 'required|url',
+            'date' => 'date_format:Y-m-d',
+        ]);
+
+        $payload['enabled'] = $this->request->get('enabled') ? true : false;
+
+        $press->update($payload);
+
+        return redirect($press->url->index)->with('status', 'Press updated.');
+    }
+
+    public function destroy(Press $press)
+    {
+        $press->delete();
+        return redirect($this->press->url->index)->with('status', 'Press deleted.');
+    }
 }

@@ -1,7 +1,10 @@
 @extends('layouts.backend')
 
 @section('toolbar')
-    {{ $vars['page_title'] }}
+    <div class="flex">
+        <span>{{ $vars['page_title'] }}</span>
+        <span class="ml-auto">@parent</span>
+    </div>
 @endsection
 
 @section('content')

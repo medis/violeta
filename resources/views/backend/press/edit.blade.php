@@ -1,10 +1,13 @@
 @extends('layouts.backend')
 
-@section('page_title')
-    Edit Press article
+@section('toolbar')
+    <div class="flex">
+        <span>{{ $vars['page_title'] }}</span>
+        <span class="ml-auto">@parent</span>
+    </div>
 @endsection
 
 @section('content')
-    @include('press.form', ['vars' => $vars])
+    @include('backend.press.form', ['vars' => $vars])
 @endsection
 
