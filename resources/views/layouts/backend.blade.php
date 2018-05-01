@@ -32,7 +32,9 @@
                 @endauth
 
                 <div class="p-4 w-full h-full">
-                    @yield('content')
+                    <div class="rounded bg-white border p-4">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
     </body>

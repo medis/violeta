@@ -1,9 +1,12 @@
 @extends('layouts.backend')
 
 @section('toolbar')
-    <ul class="list-reset text-right">
-        <li><a href="{{ route('backend.press.create') }}">Create new Press Article</a></li>
-    </ul>
+    <div class="flex">
+        <span>List of press articles</span>
+        <ul class="ml-auto list-reset text-right">
+            <li><a href="{{ route('backend.press.create') }}">Create new Press Article</a></li>
+        </ul>
+    </div>
 @endsection
 
 @section('content')
@@ -12,26 +15,26 @@
         <p>No press articles yet.</p>
     @else
 
-        <table class="table">
+        <table class="w-full border-spacing">
             <thead>
-            <tr>
-                <th>Title</th>
-                <th>Source</th>
-                <th>Link</th>
-                <th>Date</th>
-                <th>Enabled</th>
-                <th>Created at</th>
-                <th>Actions</th>
-            </tr>
+                <tr class="text-left">
+                    <th class="border-b-2">Title</th>
+                    <th class="border-b-2">Source</th>
+                    <th class="border-b-2">Link</th>
+                    <th class="border-b-2">Date</th>
+                    <th class="border-b-2">Enabled</th>
+                    <th class="border-b-2">Created at</th>
+                    <th class="border-b-2">Actions</th>
+                </tr>
             </thead>
             <tbody>
             @foreach ($presses->items() as $press)
-                <tr>
+                <tr class="py-3">
                     <td>{{ $press->title }}</td>
                     <td>{{ $press->source }}</td>
-                    <td><a href="{{ $press->link }}" target="_blank"><i class="glyphicon glyphicon-globe"></i></a></td>
+                    <td><a href="{{ $press->link }}" class="no-underline" target="_blank">@</a></td>
                     <td>{{ $press->date }}</td>
-                    <td><i class="glyphicon {{ $press->enabled ? 'glyphicon-ok' : 'glyphicon glyphicon-remove' }}"></i></td>
+                    <td>{!! $press->enabled ? '&#10003;' : '&#x2717;' !!}</td>
                     <td>{{ $press->created_at }}</td>
                     <td><a href="{{ $press->url->edit }}" class="btn btn-default" role="button"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Edit</a></td>
                 </tr>

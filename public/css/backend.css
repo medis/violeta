@@ -4597,6 +4597,10 @@ button,
  * @import "utilities/skew-transforms";
  */
 
+.border-spacing {
+  border-spacing: 0 1em;
+}
+
 @media (min-width: 576px) {
   .sm\:list-reset {
     list-style: none;
