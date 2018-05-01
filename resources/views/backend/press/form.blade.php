@@ -11,9 +11,9 @@
 {!! Form::model($vars['entity'], ['url' => $vars['route'], 'method' => $vars['entity']->id ? 'put' : 'post']) !!}
 
 
-<div class="col-sm-12">
-    {{ Form::label('title', 'Title') }}
-    {{ Form::text('title', null, ['required']) }}
+<div class="col-sm-12 flex flex-inline">
+    <div class="w-1/6">{{ Form::label('title', 'Title') }}</div>
+    <div class="w-5/6">{{ Form::text('title', null, ['required', 'class' => 'field']) }}</div>
 </div>
 
 <div class="">
