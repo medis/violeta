@@ -15,27 +15,28 @@
     </head>
     <body class="h-full flex flex-row bg-grey-lighter">
 
+        @auth
+            <div class="flex h-full w-1/6">
+                @include('backend.menu')
+            </div>
+        @endauth
+
+        <div class="flex flex-col w-full">
+
             @auth
-                <div class="flex h-full w-1/6">
-                    @include('backend.menu')
-                </div>
+
+            <div class="p-4 text-lg bg-white border-b border-grey">
+                @yield('toolbar')
+            </div>
+
             @endauth
 
-            <div class="flex flex-col w-full">
-
-                @auth
-
-                <div class="p-4 text-lg bg-white border-b border-grey">
-                    @yield('toolbar')
-                </div>
-
-                @endauth
-
-                <div class="p-4 w-full h-full">
-                    <div class="rounded bg-white border p-4">
-                        @yield('content')
-                    </div>
+            <div class="p-4 w-full h-full">
+                <div class="rounded bg-white border p-4">
+                    @yield('content')
                 </div>
             </div>
+
+        </div>
     </body>
 </html>

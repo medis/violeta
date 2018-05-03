@@ -19,8 +19,9 @@ Route::middleware(['auth','web'])
     ->as('backend.')
     ->group(function() {
 
-      Route::get('/', 'DashboardController@index')->name('home');
-      Route::resource('press', 'PressController');
+    Route::get('/', 'DashboardController@index')->name('home');
+    Route::resource('press', 'PressController');
+    Route::resource('radio', 'RadioController');
 });
 
 // Point all non api links to SPA entry point.

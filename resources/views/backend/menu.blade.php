@@ -3,7 +3,7 @@
     <a href="" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Shows</a>
     <a href="" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Music</a>
     <a href="{{ route('backend.press.index') }}" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Press</a>
-    <a href="" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Radios</a>
+    <a href="{{ route('backend.radio.index') }}" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Radios</a>
 
     <a
         href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
