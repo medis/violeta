@@ -22,6 +22,7 @@ Route::middleware(['auth','web'])
     Route::get('/', 'DashboardController@index')->name('home');
     Route::resource('press', 'PressController');
     Route::resource('radio', 'RadioController');
+    Route::resource('music', 'MusicController');
 });
 
 // Point all non api links to SPA entry point.

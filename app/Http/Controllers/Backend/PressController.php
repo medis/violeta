@@ -17,7 +17,8 @@ class PressController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param Press $press
+     * @param Request $request
      */
     public function __construct(Press $press, Request $request)
     {
