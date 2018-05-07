@@ -42,7 +42,7 @@ class MusicController extends Controller
             'entity' => $this->music->newInstance(),
             'page_title' => 'Create song',
             'route' => $this->music->url->store,
-            'types' => Music::getTypes()
+            'types' => $this->music->getTypes()
         ];
 
         return view('backend.music.create', compact('vars'));
@@ -59,10 +59,10 @@ class MusicController extends Controller
         if ($request->get('featured')) {
             // This song needs to be featured.
             // Unfeature any fratured music.
-            Music::unfeatureMusic();
+            $this->music->unfeatureMusic();
         }
 
-        $code = Music::parseCode($request->source);
+        $code = $this->music->parseCode($request->source);
 
         $this->music->create([
             'title' => $request->title,
@@ -85,7 +85,7 @@ class MusicController extends Controller
         $vars = [
             'entity' => $music,
             'page_title' => 'Edit song',
-            'types' => Music::getTypes(),
+            'types' => $this->music->getTypes(),
             'route' => $music->url->update
         ];
         return view('backend.music.edit', compact('vars'));
@@ -103,10 +103,10 @@ class MusicController extends Controller
         if ($request->get('featured')) {
             // This music needs to be featured.
             // Unfeature currect one.
-            Music::unfeatureMusic();
+            $this->music->unfeatureMusic();
         }
 
-        $code = Music::parseCode($request->source);
+        $code = $this->music->parseCode($request->source);
 
         $music->title = $request->title;
         $music->source = $code;

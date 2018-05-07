@@ -21,11 +21,11 @@ class Music extends Model
     /**
      * Return available types of music links.
      */
-    public static function getTypes() {
+    public function getTypes() {
         return self::$types;
     }
 
-    public static function unfeatureMusic() {
+    public function unfeatureMusic() {
         $music = Music::where('featured', 1)->first();
         if (!empty($music)) {
             $music->featured = false;
@@ -36,7 +36,7 @@ class Music extends Model
     /**
      * Parse and return youtube song id from url.
      */
-    public static function parseCode($link) {
+    public function parseCode($link) {
         preg_match('/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/', $link, $matches);
         return (!empty($matches) && strlen($matches[7]) == 11) ? $matches[7] : false;
     }
@@ -45,7 +45,7 @@ class Music extends Model
      * Return link to youtube.
      */
     public function getLink() {
-        return 'https://www.youtube.com/watch?v=' . $this->source;
+        return !empty($this->source) ? 'https://www.youtube.com/watch?v=' . $this->source : '';
     }
 
     public function getUrlAttribute()
