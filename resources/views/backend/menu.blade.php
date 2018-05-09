@@ -1,5 +1,5 @@
 <div class="h-full w-full flex-no-shrink bg-white border-r border-r border-grey">
-    <a href="" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Texts</a>
+    <a href="{{ route('backend.text.index') }}" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Texts</a>
     <a href="{{ route('backend.show.index') }}" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Shows</a>
     <a href="{{ route('backend.music.index') }}" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Music</a>
     <a href="{{ route('backend.press.index') }}" class="text-lg block text-center py-4 border-b text-grey-darker no-underline hover:bg-grey-lightest">Press</a>

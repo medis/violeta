@@ -24,6 +24,7 @@ Route::middleware(['auth','web'])
     Route::resource('radio', 'RadioController');
     Route::resource('music', 'MusicController');
     Route::resource('show', 'ShowsController');
+    Route::resource('text', 'TextsController', ['only' => ['edit', 'index', 'update']]);
 });
 
 // Point all non api links to SPA entry point.
