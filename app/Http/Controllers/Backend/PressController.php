@@ -46,7 +46,7 @@ class PressController extends Controller
             'route' => $this->press->url->store
         ];
 
-        return view('backend.press.create', compact('vars'));
+        return view('backend.press.form', compact('vars'));
     }
 
     public function store()
@@ -71,7 +71,7 @@ class PressController extends Controller
             'route' => $press->url->update
         ];
 
-        return view('backend.press.edit', compact('vars'));
+        return view('backend.press.form', compact('vars'));
     }
 
     public function update(Press $press)

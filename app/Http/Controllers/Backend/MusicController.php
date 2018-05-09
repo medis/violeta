@@ -45,7 +45,7 @@ class MusicController extends Controller
             'types' => $this->music->getTypes()
         ];
 
-        return view('backend.music.create', compact('vars'));
+        return view('backend.music.form', compact('vars'));
     }
 
     /**
@@ -88,7 +88,7 @@ class MusicController extends Controller
             'types' => $this->music->getTypes(),
             'route' => $music->url->update
         ];
-        return view('backend.music.edit', compact('vars'));
+        return view('backend.music.form', compact('vars'));
     }
 
     /**

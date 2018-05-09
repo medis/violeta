@@ -44,7 +44,7 @@ class RadioController extends Controller
             'route' => $this->radio->url->store
         ];
 
-        return view('backend.radio.create', compact('vars'));
+        return view('backend.radio.form', compact('vars'));
     }
 
     public function store()
@@ -71,7 +71,7 @@ class RadioController extends Controller
             'route' => $radio->url->update
         ];
 
-        return view('backend.radio.edit', compact('vars'));
+        return view('backend.radio.form', compact('vars'));
     }
 
     /**

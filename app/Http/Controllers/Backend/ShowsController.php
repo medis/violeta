@@ -44,7 +44,7 @@ class showsController extends Controller
             'route' => $this->show->url->store
         ];
 
-        return view('backend.show.create', compact('vars'));
+        return view('backend.show.form', compact('vars'));
     }
 
     public function store()
@@ -70,7 +70,7 @@ class showsController extends Controller
             'route' => $show->url->update
         ];
 
-        return view('backend.show.edit', compact('vars'));
+        return view('backend.show.form', compact('vars'));
     }
 
     public function update(Show $show)
