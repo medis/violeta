@@ -8297,8 +8297,8 @@ Vue.component('smallHero', __webpack_require__("./resources/assets/js/components
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_gql__ = __webpack_require__("./resources/assets/js/graphql/radiosAll.gql");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_gql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_gql__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_graphql__ = __webpack_require__("./resources/assets/js/graphql/radiosAll.graphql");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_graphql__);
 //
 //
 //
@@ -8326,6 +8326,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 //https://github.com/Akryum/vue-apollo-todos/blob/master/src/components/TodoList.vue
+//http://localhost/graphql?query=query+radiosAll{radios{id,title,link}}
 Vue.component('hero', __webpack_require__("./resources/assets/js/components/elements/hero.vue"));
 Vue.component('about', __webpack_require__("./resources/assets/js/components/elements/about.vue"));
 Vue.component('shows', __webpack_require__("./resources/assets/js/components/elements/shows.vue"));
@@ -8345,7 +8346,7 @@ Vue.component('newsletter', __webpack_require__("./resources/assets/js/component
 
     apollo: {
         data: {
-            query: __WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_gql__["default"]
+            query: __WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_graphql___default.a
         }
     }
 });
@@ -67065,10 +67066,126 @@ var Form = function () {
 
 /***/ }),
 
-/***/ "./resources/assets/js/graphql/radiosAll.gql":
+/***/ "./resources/assets/js/graphql/radiosAll.graphql":
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: Unexpected token (1:6)\nYou may need an appropriate loader to handle this file type.\n| query radiosAll {\n| \tallRadios {\n| \t\tid");
+
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"radiosAll"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"radios"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"link"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":52}};
+    doc.loc.source = {"body":"query radiosAll {\n\tradios {\n\t\tid\n\t\ttitle\n\t\tlink\n\t}\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+  
+
+    var names = {};
+    function unique(defs) {
+      return defs.filter(
+        function(def) {
+          if (def.kind !== 'FragmentDefinition') return true;
+          var name = def.name.value
+          if (names[name]) {
+            return false;
+          } else {
+            names[name] = true;
+            return true;
+          }
+        }
+      )
+    }
+  
+
+    // Collect any fragment/type references from a node, adding them to the refs Set
+    function collectFragmentReferences(node, refs) {
+      if (node.kind === "FragmentSpread") {
+        refs.add(node.name.value);
+      } else if (node.kind === "VariableDefinition") {
+        var type = node.type;
+        if (type.kind === "NamedType") {
+          refs.add(type.name.value);
+        }
+      }
+
+      if (node.selectionSet) {
+        node.selectionSet.selections.forEach(function(selection) {
+          collectFragmentReferences(selection, refs);
+        });
+      }
+
+      if (node.variableDefinitions) {
+        node.variableDefinitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+
+      if (node.definitions) {
+        node.definitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+    }
+
+    var definitionRefs = {};
+    (function extractReferences() {
+      doc.definitions.forEach(function(def) {
+        if (def.name) {
+          var refs = new Set();
+          collectFragmentReferences(def, refs);
+          definitionRefs[def.name.value] = refs;
+        }
+      });
+    })();
+
+    function findOperation(doc, name) {
+      for (var i = 0; i < doc.definitions.length; i++) {
+        var element = doc.definitions[i];
+        if (element.name && element.name.value == name) {
+          return element;
+        }
+      }
+    }
+
+    function oneQuery(doc, operationName) {
+      // Copy the DocumentNode, but clear out the definitions
+      var newDoc = {
+        kind: doc.kind,
+        definitions: [findOperation(doc, operationName)]
+      };
+      if (doc.hasOwnProperty("loc")) {
+        newDoc.loc = doc.loc;
+      }
+
+      // Now, for the operation we're running, find any fragments referenced by
+      // it or the fragments it references
+      var opRefs = definitionRefs[operationName] || new Set();
+      var allRefs = new Set();
+      var newRefs = new Set(opRefs);
+      while (newRefs.size > 0) {
+        var prevRefs = newRefs;
+        newRefs = new Set();
+
+        prevRefs.forEach(function(refName) {
+          if (!allRefs.has(refName)) {
+            allRefs.add(refName);
+            var childRefs = definitionRefs[refName] || new Set();
+            childRefs.forEach(function(childRef) {
+              newRefs.add(childRef);
+            });
+          }
+        });
+      }
+
+      allRefs.forEach(function(refName) {
+        var op = findOperation(doc, refName);
+        if (op) {
+          newDoc.definitions.push(op);
+        }
+      });
+
+      return newDoc;
+    }
+
+    module.exports = doc;
+    
+        module.exports["radiosAll"] = oneQuery(doc, "radiosAll");
+        
+
 
 /***/ }),
 

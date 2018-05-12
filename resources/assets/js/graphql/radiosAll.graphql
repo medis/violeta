@@ -1,5 +1,5 @@
 query radiosAll {
-	allRadios {
+	radios {
 		id
 		title
 		link
