@@ -10,6 +10,13 @@ window.Vue = require('vue');
 
 import VueNotifications from 'vue-notifications';
 import miniToastr from 'mini-toastr';
+import VueRouter from 'vue-router';
+import ContentPlaceholder from 'vue-content-placeholder';
+// import VueApollo from 'vue-apollo'
+import apolloProvider from './apollo'
+// VuejS data repository.
+import store from './store/index';
+
 const toastTypes = {
   success: 'success',
   error: 'error',
@@ -28,9 +35,6 @@ const options = {
 };
 
 Vue.use(VueNotifications, options);
-
-import VueRouter from 'vue-router';
-import ContentPlaceholder from 'vue-content-placeholder'
 
 Vue.use(VueRouter);
 
@@ -72,13 +76,11 @@ const router = new VueRouter({
  // VueJS instance for events.
 window.Event = new Vue();
 
-// VuejS data repository.
-import store from './store/index';
-
 Vue.component('app', require('./components/App.vue'));
 
 const app = new Vue({
     el: '#app',
     router,
-    store
+    store,
+    apolloProvider
 });
