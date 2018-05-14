@@ -22,13 +22,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .version();
 
 mix.webpackConfig({
-    resolve: {
-        extensions: ['.gql', '.graphql'],
-        modules: [
-            path.resolve(__dirname),
-            'node_modules',
-        ]
-    },
     module: {
         rules: [
             {

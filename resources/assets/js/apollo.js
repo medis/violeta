@@ -21,6 +21,9 @@ Vue.use(VueApollo);
 
 const apolloProvider = new VueApollo({
     defaultClient: apolloClient,
+    defaultOptions: {
+        $loadingKey: 'loading'
+    }
 })
 
 export default apolloProvider

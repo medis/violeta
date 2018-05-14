@@ -82,5 +82,6 @@ const app = new Vue({
     el: '#app',
     router,
     store,
-    apolloProvider
+    // apolloProvider
+    provide: apolloProvider.provide()
 });

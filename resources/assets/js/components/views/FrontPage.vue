@@ -9,7 +9,12 @@
         <div class="column">
           <about></about>
           <shows></shows>
-          <radios></radios>
+          <div v-if="loading">
+            <content-placeholder :rows="placeholderRows"></content-placeholder>
+          </div>
+          <div v-else>
+            <radios :data-radios="radios"></radios>
+          </div>
         </div>
 
         <div class="column">
@@ -33,19 +38,44 @@
   Vue.component('FeaturedMusic', require('../elements/featuredMusic.vue'));
   Vue.component('newsletter', require('../elements/newsletter.vue'));
 
-  import RADIOS_ALL from '../../graphql/radiosAll.graphql'
+  import ContentPlaceholder from 'vue-content-placeholder';
+  import ALL_RADIOS_QUERY from '../../graphql/radiosAll.graphql'
 
   export default {
       data() {
           return {
-              data: []
+              radios: [],
+              loading: 0,
+
+              placeholderRows: [
+                  {
+                      height: '15px',
+                      boxes: [[0, '100px']]
+                  },
+                  {
+                      height: '15px',
+                      boxes:[[0, '100px'], ['10%', 1]]
+                  },
+                  {
+                      height: '15px',
+                      boxes: [[0, '100px']]
+                  },
+                  {
+                      height: '15px',
+                      boxes:[[0, '100px'], ['10%', 2]]
+                  }
+              ]
           }
       },
 
-      apollo: {
-          data: {
-              query: RADIOS_ALL
-          }
+      components: {
+          ContentPlaceholder
       },
+
+      apollo: {
+          radios: {
+              query: ALL_RADIOS_QUERY
+          }
+      }
   }
 </script>

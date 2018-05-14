@@ -7903,9 +7903,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__);
 //
 //
 //
@@ -7922,42 +7919,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])({
-    radios: 'allRadios',
-    ready: 'radiosReady'
-  }),
-  data: function data() {
-    return {
-      placeholderRows: [{
-        height: '15px',
-        boxes: [[0, '100px']]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px'], ['10%', 1]]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px']]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px'], ['10%', 2]]
-      }]
-    };
-  },
-
-  components: {
-    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default.a
-  }
+  props: ['dataRadios']
 });
 
 /***/ }),
@@ -8297,8 +8261,15 @@ Vue.component('smallHero', __webpack_require__("./resources/assets/js/components
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_graphql__ = __webpack_require__("./resources/assets/js/graphql/radiosAll.graphql");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_graphql__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_radiosAll_graphql__ = __webpack_require__("./resources/assets/js/graphql/radiosAll.graphql");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_radiosAll_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__graphql_radiosAll_graphql__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8336,17 +8307,37 @@ Vue.component('newsletter', __webpack_require__("./resources/assets/js/component
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            data: []
+            radios: [],
+            loading: 0,
+
+            placeholderRows: [{
+                height: '15px',
+                boxes: [[0, '100px']]
+            }, {
+                height: '15px',
+                boxes: [[0, '100px'], ['10%', 1]]
+            }, {
+                height: '15px',
+                boxes: [[0, '100px']]
+            }, {
+                height: '15px',
+                boxes: [[0, '100px'], ['10%', 2]]
+            }]
         };
     },
 
 
+    components: {
+        ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder___default.a
+    },
+
     apollo: {
-        data: {
-            query: __WEBPACK_IMPORTED_MODULE_0__graphql_radiosAll_graphql___default.a
+        radios: {
+            query: __WEBPACK_IMPORTED_MODULE_1__graphql_radiosAll_graphql___default.a
         }
     }
 });
@@ -48098,7 +48089,27 @@ var render = function() {
           _c(
             "div",
             { staticClass: "column" },
-            [_c("about"), _vm._v(" "), _c("shows"), _vm._v(" "), _c("radios")],
+            [
+              _c("about"),
+              _vm._v(" "),
+              _c("shows"),
+              _vm._v(" "),
+              _vm.loading
+                ? _c(
+                    "div",
+                    [
+                      _c("content-placeholder", {
+                        attrs: { rows: _vm.placeholderRows }
+                      })
+                    ],
+                    1
+                  )
+                : _c(
+                    "div",
+                    [_c("radios", { attrs: { "data-radios": _vm.radios } })],
+                    1
+                  )
+            ],
             1
           ),
           _vm._v(" "),
@@ -49347,42 +49358,25 @@ var render = function() {
   return _c("section", { staticClass: "section" }, [
     _c("h2", { staticClass: "title is-4" }, [_vm._v("Radio")]),
     _vm._v(" "),
-    !_vm.ready
-      ? _c(
-          "div",
-          [_c("content-placeholder", { attrs: { rows: _vm.placeholderRows } })],
-          1
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.ready
+    _vm.dataRadios.length
       ? _c("div", [
-          _vm.radios.length
-            ? _c("div", [
-                _c(
-                  "div",
-                  { staticClass: "columns is-multiline" },
-                  _vm._l(_vm.radios, function(radio) {
-                    return _c(
-                      "div",
-                      {
-                        key: radio.id,
-                        staticClass: "media radio column is-half"
-                      },
-                      [
-                        _c(
-                          "a",
-                          { attrs: { href: radio.link, target: "_blank" } },
-                          [_vm._v(_vm._s(radio.title))]
-                        )
-                      ]
-                    )
-                  })
-                )
-              ])
-            : _c("div", [_vm._v("Soon")])
+          _c(
+            "div",
+            { staticClass: "columns is-multiline" },
+            _vm._l(_vm.dataRadios, function(radio) {
+              return _c(
+                "div",
+                { key: radio.id, staticClass: "media radio column is-half" },
+                [
+                  _c("a", { attrs: { href: radio.link, target: "_blank" } }, [
+                    _vm._v(_vm._s(radio.title))
+                  ])
+                ]
+              )
+            })
+          )
         ])
-      : _vm._e()
+      : _c("div", [_vm._v("Soon")])
   ])
 }
 var staticRenderFns = []
@@ -65499,7 +65493,10 @@ var apolloClient = new __WEBPACK_IMPORTED_MODULE_1_apollo_client__["a" /* Apollo
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_apollo__["a" /* default */]);
 
 var apolloProvider = new __WEBPACK_IMPORTED_MODULE_4_vue_apollo__["a" /* default */]({
-    defaultClient: apolloClient
+    defaultClient: apolloClient,
+    defaultOptions: {
+        $loadingKey: 'loading'
+    }
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (apolloProvider);
@@ -65602,7 +65599,8 @@ var app = new Vue({
     el: '#app',
     router: router,
     store: __WEBPACK_IMPORTED_MODULE_5__store_index__["a" /* default */],
-    apolloProvider: __WEBPACK_IMPORTED_MODULE_4__apollo__["a" /* default */]
+    // apolloProvider
+    provide: __WEBPACK_IMPORTED_MODULE_4__apollo__["a" /* default */].provide()
 });
 
 /***/ }),
@@ -67070,8 +67068,8 @@ var Form = function () {
 /***/ (function(module, exports) {
 
 
-    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"radiosAll"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"radios"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"link"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":52}};
-    doc.loc.source = {"body":"query radiosAll {\n\tradios {\n\t\tid\n\t\ttitle\n\t\tlink\n\t}\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"allRadiosQuery"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"radios"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"link"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":57}};
+    doc.loc.source = {"body":"query allRadiosQuery {\n\tradios {\n\t\tid\n\t\ttitle\n\t\tlink\n\t}\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
   
 
     var names = {};
@@ -67183,7 +67181,7 @@ var Form = function () {
 
     module.exports = doc;
     
-        module.exports["radiosAll"] = oneQuery(doc, "radiosAll");
+        module.exports["allRadiosQuery"] = oneQuery(doc, "allRadiosQuery");
         
 
 
@@ -67200,8 +67198,6 @@ var Form = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_press__ = __webpack_require__("./resources/assets/js/store/modules/press.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_music__ = __webpack_require__("./resources/assets/js/store/modules/music.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_texts__ = __webpack_require__("./resources/assets/js/store/modules/texts.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modules_radios__ = __webpack_require__("./resources/assets/js/store/modules/radios.js");
-
 
 
 
@@ -67214,7 +67210,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
   modules: {
     show: __WEBPACK_IMPORTED_MODULE_2__modules_show__["a" /* default */],
-    radios: __WEBPACK_IMPORTED_MODULE_6__modules_radios__["a" /* default */],
     press: __WEBPACK_IMPORTED_MODULE_3__modules_press__["a" /* default */],
     music: __WEBPACK_IMPORTED_MODULE_4__modules_music__["a" /* default */],
     texts: __WEBPACK_IMPORTED_MODULE_5__modules_texts__["a" /* default */]
@@ -67370,83 +67365,6 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, 'ADD_PRESS', funct
   state.ready = true;
 }), _defineProperty(_mutations, 'DISABLE_PRESS', function DISABLE_PRESS(state) {
   state.press = [];
-  state.meta = [];
-  state.links = [];
-  state.ready = false;
-}), _mutations);
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  state: state,
-  getters: getters,
-  actions: actions,
-  mutations: mutations
-});
-
-/***/ }),
-
-/***/ "./resources/assets/js/store/modules/radios.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vars__ = __webpack_require__("./resources/assets/js/store/vars.js");
-var _mutations;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-// initial state
-var state = {
-  ready: false,
-  radios: [],
-  meta: [],
-  links: []
-
-  // getters
-};var getters = {
-  allRadios: function allRadios(state) {
-    return state.radios;
-  },
-  radiosPager: function radiosPager(state) {
-    return state.meta;
-  },
-  radiosLinks: function radiosLinks(state) {
-    return state.links;
-  },
-  radiosReady: function radiosReady(state) {
-    return state.ready;
-  }
-
-  // actions
-};var actions = {
-  getAllRadios: function getAllRadios(_ref) {
-    var commit = _ref.commit;
-
-    axios.get(__WEBPACK_IMPORTED_MODULE_0__vars__["a" /* API_LINK */] + 'radios').then(function (radios) {
-      commit('ADD_RADIOS', { radios: radios });
-    });
-  },
-  changeRadiosPage: function changeRadiosPage(_ref2, link) {
-    var commit = _ref2.commit;
-
-    commit('DISABLE_RADIOS');
-    var param = link.split('?')[1];
-    axios.get(__WEBPACK_IMPORTED_MODULE_0__vars__["a" /* API_LINK */] + 'radios?' + param).then(function (radios) {
-      commit('ADD_RADIOS', { radios: radios });
-    });
-  }
-};
-
-// mutations
-var mutations = (_mutations = {}, _defineProperty(_mutations, 'ADD_RADIOS', function ADD_RADIOS(state, _ref3) {
-  var radios = _ref3.radios;
-
-  state.radios = radios.data.data;
-  state.meta = radios.data.meta;
-  state.links = radios.data.links;
-  state.ready = true;
-}), _defineProperty(_mutations, 'DISABLE_RADIOS', function DISABLE_RADIOS(state) {
-  state.radios = [];
   state.meta = [];
   state.links = [];
   state.ready = false;

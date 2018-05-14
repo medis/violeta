@@ -1,4 +1,4 @@
-query radiosAll {
+query allRadiosQuery {
 	radios {
 		id
 		title
