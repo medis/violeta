@@ -1,0 +1,13 @@
+query allRadiosQuery ($shows_number: Int!) {
+	radios {
+		id
+		title
+		link
+	}
+	shows (first: $shows_number) {
+		id
+		venue
+		address
+		date
+	}
+}

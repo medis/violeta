@@ -28,8 +28,6 @@
             Event.$on('close', () => this.showModal = false );
             Event.$on('open', (data) => this.openDialog(data) );
 
-            this.$store.dispatch('getAllShows');
-            this.$store.dispatch('getAllRadios');
             this.$store.dispatch('getAllPress');
             this.$store.dispatch('getAllMusic');
             this.$store.dispatch('getAllTexts');

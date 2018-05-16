@@ -4,9 +4,8 @@ namespace App;
 
 use App\Presenters\Show\UrlPresenter;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 
-class Show extends Model
+class Show extends BaseModel
 {
     protected $fillable = ['venue', 'address', 'date', 'enabled'];
 

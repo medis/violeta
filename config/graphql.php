@@ -124,7 +124,8 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'radios' => 'App\GraphQL\Query\RadiosQuery'
+                'radios' => 'App\GraphQL\Query\RadiosQuery',
+                'shows' => 'App\GraphQL\Query\ShowsQuery'
             ],
             'mutation' => []
         ]
@@ -179,7 +180,8 @@ return [
      * ]
      */
     'types' => [
-        'Radio' => 'App\GraphQL\Type\RadioType'
+        'Radio' => 'App\GraphQL\Type\RadioType',
+        'Show' => 'App\GraphQL\Type\ShowType'
     ],
 
     /*

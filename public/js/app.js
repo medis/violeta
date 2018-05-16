@@ -7366,8 +7366,6 @@ Vue.component('modal', __webpack_require__("./resources/assets/js/components/ele
             return _this.openDialog(data);
         });
 
-        this.$store.dispatch('getAllShows');
-        this.$store.dispatch('getAllRadios');
         this.$store.dispatch('getAllPress');
         this.$store.dispatch('getAllMusic');
         this.$store.dispatch('getAllTexts');
@@ -7967,9 +7965,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__);
 //
 //
 //
@@ -7982,46 +7977,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
 
 Vue.component('show', __webpack_require__("./resources/assets/js/components/elements/show.vue"));
-/* harmony default export */ __webpack_exports__["default"] = ({
-  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])({
-    shows: 'mostRecentShows',
-    ready: 'showsReady'
-  }),
-  data: function data() {
-    return {
-      placeholderRows: [{
-        height: '15px',
-        boxes: [[0, '100px']]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px'], ['10%', 1]]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px']]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px'], ['10%', 2]]
-      }]
-    };
-  },
 
-  components: {
-    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default.a
-  }
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['dataShows']
 });
 
 /***/ }),
@@ -8263,8 +8223,11 @@ Vue.component('smallHero', __webpack_require__("./resources/assets/js/components
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_radiosAll_graphql__ = __webpack_require__("./resources/assets/js/graphql/radiosAll.graphql");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_radiosAll_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__graphql_radiosAll_graphql__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_frontPage_graphql__ = __webpack_require__("./resources/assets/js/graphql/frontPage.graphql");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_frontPage_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__graphql_frontPage_graphql__);
+//
+//
+//
 //
 //
 //
@@ -8296,7 +8259,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-//https://github.com/Akryum/vue-apollo-todos/blob/master/src/components/TodoList.vue
 //http://localhost/graphql?query=query+radiosAll{radios{id,title,link}}
 Vue.component('hero', __webpack_require__("./resources/assets/js/components/elements/hero.vue"));
 Vue.component('about', __webpack_require__("./resources/assets/js/components/elements/about.vue"));
@@ -8312,6 +8274,7 @@ Vue.component('newsletter', __webpack_require__("./resources/assets/js/component
     data: function data() {
         return {
             radios: [],
+            shows: [],
             loading: 0,
 
             placeholderRows: [{
@@ -8336,8 +8299,16 @@ Vue.component('newsletter', __webpack_require__("./resources/assets/js/component
     },
 
     apollo: {
-        radios: {
-            query: __WEBPACK_IMPORTED_MODULE_1__graphql_radiosAll_graphql___default.a
+        data: {
+            query: __WEBPACK_IMPORTED_MODULE_1__graphql_frontPage_graphql___default.a,
+            variables: {
+                shows_number: 3
+            },
+            manual: true,
+            result: function result(results) {
+                this.radios = results.data.radios;
+                this.shows = results.data.shows;
+            }
         }
     }
 });
@@ -48092,7 +48063,21 @@ var render = function() {
             [
               _c("about"),
               _vm._v(" "),
-              _c("shows"),
+              _vm.loading
+                ? _c(
+                    "div",
+                    [
+                      _c("content-placeholder", {
+                        attrs: { rows: _vm.placeholderRows }
+                      })
+                    ],
+                    1
+                  )
+                : _c(
+                    "div",
+                    [_c("shows", { attrs: { "data-shows": _vm.shows } })],
+                    1
+                  ),
               _vm._v(" "),
               _vm.loading
                 ? _c(
@@ -49100,39 +49085,13 @@ var render = function() {
       _vm._v(" "),
       _c("h2", { staticClass: "title is-4" }, [_vm._v("Upcoming shows")]),
       _vm._v(" "),
-      !_vm.ready
+      _vm.dataShows.length
         ? _c(
             "div",
-            [
-              _c("content-placeholder", {
-                attrs: { rows: _vm.placeholderRows }
-              }),
-              _c("br"),
-              _vm._v(" "),
-              _c("content-placeholder", {
-                attrs: { rows: _vm.placeholderRows }
-              }),
-              _c("br"),
-              _vm._v(" "),
-              _c("content-placeholder", {
-                attrs: { rows: _vm.placeholderRows }
-              })
-            ],
-            1
+            _vm._l(_vm.dataShows, function(show) {
+              return _c("show", { key: show.id, attrs: { show: show } })
+            })
           )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.ready
-        ? _c("div", [
-            _vm.shows.length
-              ? _c(
-                  "div",
-                  _vm._l(_vm.shows, function(show) {
-                    return _c("show", { key: show.id, attrs: { show: show } })
-                  })
-                )
-              : _c("div", [_vm._v("Soon")])
-          ])
         : _vm._e()
     ],
     1
@@ -67064,12 +67023,12 @@ var Form = function () {
 
 /***/ }),
 
-/***/ "./resources/assets/js/graphql/radiosAll.graphql":
+/***/ "./resources/assets/js/graphql/frontPage.graphql":
 /***/ (function(module, exports) {
 
 
-    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"allRadiosQuery"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"radios"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"link"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":57}};
-    doc.loc.source = {"body":"query allRadiosQuery {\n\tradios {\n\t\tid\n\t\ttitle\n\t\tlink\n\t}\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"allRadiosQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"radios"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"link"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"shows"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"venue"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"address"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"date"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":144}};
+    doc.loc.source = {"body":"query allRadiosQuery ($shows_number: Int!) {\n\tradios {\n\t\tid\n\t\ttitle\n\t\tlink\n\t}\n\tshows (first: $shows_number) {\n\t\tid\n\t\tvenue\n\t\taddress\n\t\tdate\n\t}\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
   
 
     var names = {};
@@ -67194,11 +67153,9 @@ var Form = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__("./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_show__ = __webpack_require__("./resources/assets/js/store/modules/show.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_press__ = __webpack_require__("./resources/assets/js/store/modules/press.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_music__ = __webpack_require__("./resources/assets/js/store/modules/music.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_texts__ = __webpack_require__("./resources/assets/js/store/modules/texts.js");
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_press__ = __webpack_require__("./resources/assets/js/store/modules/press.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_music__ = __webpack_require__("./resources/assets/js/store/modules/music.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_texts__ = __webpack_require__("./resources/assets/js/store/modules/texts.js");
 
 
 
@@ -67209,10 +67166,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
   modules: {
-    show: __WEBPACK_IMPORTED_MODULE_2__modules_show__["a" /* default */],
-    press: __WEBPACK_IMPORTED_MODULE_3__modules_press__["a" /* default */],
-    music: __WEBPACK_IMPORTED_MODULE_4__modules_music__["a" /* default */],
-    texts: __WEBPACK_IMPORTED_MODULE_5__modules_texts__["a" /* default */]
+    press: __WEBPACK_IMPORTED_MODULE_2__modules_press__["a" /* default */],
+    music: __WEBPACK_IMPORTED_MODULE_3__modules_music__["a" /* default */],
+    texts: __WEBPACK_IMPORTED_MODULE_4__modules_texts__["a" /* default */]
   }
 }));
 
@@ -67365,94 +67321,6 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, 'ADD_PRESS', funct
   state.ready = true;
 }), _defineProperty(_mutations, 'DISABLE_PRESS', function DISABLE_PRESS(state) {
   state.press = [];
-  state.meta = [];
-  state.links = [];
-  state.ready = false;
-}), _mutations);
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  state: state,
-  getters: getters,
-  actions: actions,
-  mutations: mutations
-});
-
-/***/ }),
-
-/***/ "./resources/assets/js/store/modules/show.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vars__ = __webpack_require__("./resources/assets/js/store/vars.js");
-var _mutations;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-// initial state
-var state = {
-  ready: false,
-  shows: [],
-  latestShows: [],
-  meta: [],
-  links: []
-
-  // getters
-};var getters = {
-  allShows: function allShows(state) {
-    return state.shows;
-  },
-  showsPager: function showsPager(state) {
-    return state.meta;
-  },
-  showsLinks: function showsLinks(state) {
-    return state.links;
-  },
-  mostRecentShows: function mostRecentShows(state) {
-    return state.latestShows;
-  },
-  showsReady: function showsReady(state) {
-    return state.ready;
-  }
-
-  // actions
-};var actions = {
-  getAllShows: function getAllShows(_ref) {
-    var commit = _ref.commit;
-
-    axios.get(__WEBPACK_IMPORTED_MODULE_0__vars__["a" /* API_LINK */] + 'shows').then(function (shows) {
-      commit('ADD_SHOWS', { shows: shows });
-    });
-
-    // shop.getProducts(products => {
-    //   commit('ADD_SHOWS', { products })
-    // })
-  },
-  changeShowsPage: function changeShowsPage(_ref2, link) {
-    var commit = _ref2.commit;
-
-    commit('DISABLE_SHOWS');
-    var param = link.split('?')[1];
-    axios.get(__WEBPACK_IMPORTED_MODULE_0__vars__["a" /* API_LINK */] + 'shows?' + param).then(function (shows) {
-      commit('ADD_SHOWS', { shows: shows });
-    });
-  }
-};
-
-// mutations
-var mutations = (_mutations = {}, _defineProperty(_mutations, 'ADD_SHOWS', function ADD_SHOWS(state, _ref3) {
-  var shows = _ref3.shows;
-
-  state.shows = shows.data.data;
-  // Add latest shows only when first page is fetched.
-  // Page can be changed in Shows page but latest shows should never change.
-  state.latestShows = !state.latestShows.length ? shows.data.data.slice(0, 3) : state.latestShows;
-  state.meta = shows.data.meta;
-  state.links = shows.data.links;
-  state.ready = true;
-}), _defineProperty(_mutations, 'DISABLE_SHOWS', function DISABLE_SHOWS(state) {
-  state.shows = [];
   state.meta = [];
   state.links = [];
   state.ready = false;

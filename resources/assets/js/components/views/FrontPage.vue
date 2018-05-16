@@ -8,13 +8,16 @@
 
         <div class="column">
           <about></about>
-          <shows></shows>
+
           <div v-if="loading">
             <content-placeholder :rows="placeholderRows"></content-placeholder>
           </div>
-          <div v-else>
-            <radios :data-radios="radios"></radios>
+          <div v-else><shows :data-shows="shows"></shows></div>
+
+          <div v-if="loading">
+            <content-placeholder :rows="placeholderRows"></content-placeholder>
           </div>
+          <div v-else><radios :data-radios="radios"></radios></div>
         </div>
 
         <div class="column">
@@ -29,7 +32,6 @@
 </template>
 
 <script>
-  //https://github.com/Akryum/vue-apollo-todos/blob/master/src/components/TodoList.vue
   //http://localhost/graphql?query=query+radiosAll{radios{id,title,link}}
   Vue.component('hero', require('../elements/hero.vue'));
   Vue.component('about', require('../elements/about.vue'));
@@ -39,12 +41,13 @@
   Vue.component('newsletter', require('../elements/newsletter.vue'));
 
   import ContentPlaceholder from 'vue-content-placeholder';
-  import ALL_RADIOS_QUERY from '../../graphql/radiosAll.graphql'
+  import FRONT_PAGE_QUERY from '../../graphql/frontPage.graphql'
 
   export default {
       data() {
           return {
               radios: [],
+              shows: [],
               loading: 0,
 
               placeholderRows: [
@@ -73,8 +76,16 @@
       },
 
       apollo: {
-          radios: {
-              query: ALL_RADIOS_QUERY
+          data: {
+              query: FRONT_PAGE_QUERY,
+              variables: {
+                  shows_number: 3
+              },
+              manual: true,
+              result(results) {
+                  this.radios = results.data.radios;
+                  this.shows = results.data.shows;
+              }
           }
       }
   }

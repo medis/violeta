@@ -3,10 +3,8 @@
 namespace App;
 
 use App\Presenters\Radio\UrlPresenter;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 
-class Radio extends Model
+class Radio extends BaseModel
 {
     protected $fillable = ['title', 'link', 'enabled'];
 
