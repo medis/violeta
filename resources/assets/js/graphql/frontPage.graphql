@@ -1,4 +1,4 @@
-query allRadiosQuery ($shows_number: Int!) {
+query frontPageQuery ($shows_number: Int!) {
 	radios {
 		id
 		title
