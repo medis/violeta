@@ -10,4 +10,10 @@ query frontPageQuery ($shows_number: Int!) {
 		address
 		date
 	}
+	musics (featured: true) {
+		id
+		title
+		type
+		source
+	}
 }

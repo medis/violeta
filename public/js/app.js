@@ -7367,7 +7367,6 @@ Vue.component('modal', __webpack_require__("./resources/assets/js/components/ele
         });
 
         this.$store.dispatch('getAllPress');
-        this.$store.dispatch('getAllMusic');
         this.$store.dispatch('getAllTexts');
     },
 
@@ -7568,9 +7567,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__);
 //
 //
 //
@@ -7583,47 +7579,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-
-
-
 
 Vue.component('SingleVideo', __webpack_require__("./resources/assets/js/components/elements/video.vue"));
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])({
-    featuredSong: 'featuredSong',
-    ready: 'musicReady'
-  }),
+  props: ['dataFeaturedSong'],
 
   data: function data() {
     return {
-      id: "component_" + this._uid,
-      placeholderRows: [{
-        height: '15px',
-        boxes: [[0, '100px']]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px'], ['10%', 1]]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px']]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px'], ['10%', 2]]
-      }]
+      id: "component_" + this._uid
     };
-  },
-
-
-  components: {
-    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default.a
   }
 });
 
@@ -8258,6 +8223,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 //http://localhost/graphql?query=query+radiosAll{radios{id,title,link}}
 Vue.component('hero', __webpack_require__("./resources/assets/js/components/elements/hero.vue"));
@@ -8275,6 +8245,7 @@ Vue.component('newsletter', __webpack_require__("./resources/assets/js/component
         return {
             radios: [],
             shows: [],
+            featuredSong: [],
             loading: 0,
 
             placeholderRows: [{
@@ -8308,6 +8279,7 @@ Vue.component('newsletter', __webpack_require__("./resources/assets/js/component
             result: function result(results) {
                 this.radios = results.data.radios;
                 this.shows = results.data.shows;
+                this.featuredSong = results.data.musics[0];
             }
         }
     }
@@ -48101,7 +48073,29 @@ var render = function() {
           _c(
             "div",
             { staticClass: "column" },
-            [_c("featured-music"), _vm._v(" "), _c("newsletter")],
+            [
+              _vm.loading
+                ? _c(
+                    "div",
+                    [
+                      _c("content-placeholder", {
+                        attrs: { rows: _vm.placeholderRows }
+                      })
+                    ],
+                    1
+                  )
+                : _c(
+                    "div",
+                    [
+                      _c("featured-music", {
+                        attrs: { "data-featured-song": _vm.featuredSong }
+                      })
+                    ],
+                    1
+                  ),
+              _vm._v(" "),
+              _c("newsletter")
+            ],
             1
           )
         ])
@@ -48613,28 +48607,12 @@ var render = function() {
       _vm._v(" "),
       _c("h2", { staticClass: "title is-4" }, [_vm._v("Featured Music")]),
       _vm._v(" "),
-      _c("div", { staticClass: "content" }, [
-        !_vm.ready
-          ? _c(
-              "div",
-              [
-                _c("content-placeholder", {
-                  attrs: { rows: _vm.placeholderRows }
-                }),
-                _c("br")
-              ],
-              1
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.ready
-          ? _c(
-              "div",
-              [_c("single-video", { attrs: { data: _vm.featuredSong } })],
-              1
-            )
-          : _vm._e()
-      ])
+      _c(
+        "div",
+        { staticClass: "content" },
+        [_c("single-video", { attrs: { data: _vm.dataFeaturedSong } })],
+        1
+      )
     ],
     1
   )
@@ -67027,8 +67005,8 @@ var Form = function () {
 /***/ (function(module, exports) {
 
 
-    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"frontPageQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"radios"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"link"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"shows"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"venue"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"address"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"date"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":144}};
-    doc.loc.source = {"body":"query frontPageQuery ($shows_number: Int!) {\n\tradios {\n\t\tid\n\t\ttitle\n\t\tlink\n\t}\n\tshows (first: $shows_number) {\n\t\tid\n\t\tvenue\n\t\taddress\n\t\tdate\n\t}\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"frontPageQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"radios"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"link"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"shows"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"venue"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"address"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"date"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"musics"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"featured"},"value":{"kind":"BooleanValue","value":true}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"type"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"source"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":203}};
+    doc.loc.source = {"body":"query frontPageQuery ($shows_number: Int!) {\n\tradios {\n\t\tid\n\t\ttitle\n\t\tlink\n\t}\n\tshows (first: $shows_number) {\n\t\tid\n\t\tvenue\n\t\taddress\n\t\tdate\n\t}\n\tmusics (featured: true) {\n\t\tid\n\t\ttitle\n\t\ttype\n\t\tsource\n\t}\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
   
 
     var names = {};
@@ -67154,9 +67132,7 @@ var Form = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_press__ = __webpack_require__("./resources/assets/js/store/modules/press.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_music__ = __webpack_require__("./resources/assets/js/store/modules/music.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_texts__ = __webpack_require__("./resources/assets/js/store/modules/texts.js");
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_texts__ = __webpack_require__("./resources/assets/js/store/modules/texts.js");
 
 
 
@@ -67167,94 +67143,9 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
   modules: {
     press: __WEBPACK_IMPORTED_MODULE_2__modules_press__["a" /* default */],
-    music: __WEBPACK_IMPORTED_MODULE_3__modules_music__["a" /* default */],
-    texts: __WEBPACK_IMPORTED_MODULE_4__modules_texts__["a" /* default */]
+    texts: __WEBPACK_IMPORTED_MODULE_3__modules_texts__["a" /* default */]
   }
 }));
-
-/***/ }),
-
-/***/ "./resources/assets/js/store/modules/music.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vars__ = __webpack_require__("./resources/assets/js/store/vars.js");
-var _mutations;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-// initial state
-var state = {
-  ready: false,
-  music: [],
-  featuredSong: [],
-  meta: [],
-  links: []
-
-  // getters
-};var getters = {
-  allMusic: function allMusic(state) {
-    return state.music;
-  },
-  musicPager: function musicPager(state) {
-    return state.meta;
-  },
-  musicLinks: function musicLinks(state) {
-    return state.links;
-  },
-  featuredSong: function featuredSong(state) {
-    return state.featuredSong;
-  },
-  musicReady: function musicReady(state) {
-    return state.ready;
-  }
-
-  // actions
-};var actions = {
-  getAllMusic: function getAllMusic(_ref) {
-    var commit = _ref.commit;
-
-    axios.get(__WEBPACK_IMPORTED_MODULE_0__vars__["a" /* API_LINK */] + 'music').then(function (music) {
-      commit('ADD_MUSIC', { music: music });
-    });
-  },
-  changeMusicPage: function changeMusicPage(_ref2, link) {
-    var commit = _ref2.commit;
-
-    commit('DISABLE_MUSIC');
-    var param = link.split('?')[1];
-    axios.get(__WEBPACK_IMPORTED_MODULE_0__vars__["a" /* API_LINK */] + 'music?' + param).then(function (music) {
-      commit('ADD_MUSIC', { music: music });
-    });
-  }
-};
-
-// mutations
-var mutations = (_mutations = {}, _defineProperty(_mutations, 'ADD_MUSIC', function ADD_MUSIC(state, _ref3) {
-  var music = _ref3.music;
-
-  state.music = music.data.data;
-  // Add featured song.
-  // Page can be changed in Music page but featured song needs to perist.
-  state.featuredSong = !state.featuredSong.length ? music.data.data[0] : state.featuredSong;
-  state.meta = music.data.meta;
-  state.links = music.data.links;
-  state.ready = true;
-}), _defineProperty(_mutations, 'DISABLE_MUSIC', function DISABLE_MUSIC(state) {
-  state.music = [];
-  state.meta = [];
-  state.links = [];
-  state.ready = false;
-}), _mutations);
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  state: state,
-  getters: getters,
-  actions: actions,
-  mutations: mutations
-});
 
 /***/ }),
 

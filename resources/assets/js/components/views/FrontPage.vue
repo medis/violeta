@@ -21,7 +21,12 @@
         </div>
 
         <div class="column">
-          <featured-music></featured-music>
+
+          <div v-if="loading">
+            <content-placeholder :rows="placeholderRows"></content-placeholder>
+          </div>
+          <div v-else><featured-music :data-featured-song="featuredSong"></featured-music></div>
+
           <newsletter></newsletter>
         </div>
 
@@ -48,6 +53,7 @@
           return {
               radios: [],
               shows: [],
+              featuredSong: [],
               loading: 0,
 
               placeholderRows: [
@@ -85,6 +91,7 @@
               result(results) {
                   this.radios = results.data.radios;
                   this.shows = results.data.shows;
+                  this.featuredSong = results.data.musics[0];
               }
           }
       }

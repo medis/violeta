@@ -6,7 +6,7 @@ use App\Presenters\Music\UrlPresenter;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class Music extends Model
+class Music extends BaseModel
 {
     protected $fillable = ['title', 'type', 'source', 'featured'];
 

@@ -29,7 +29,6 @@
             Event.$on('open', (data) => this.openDialog(data) );
 
             this.$store.dispatch('getAllPress');
-            this.$store.dispatch('getAllMusic');
             this.$store.dispatch('getAllTexts');
         },
 

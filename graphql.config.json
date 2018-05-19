@@ -1,19 +1,5 @@
 {
 
-  "schema": {
-    "request": {
-      "url" : "http://localhost/graphql",
-      "method": "GET",
-      "postIntrospectionQuery": false,
-      "options" : {
-        "headers": {
-          "user-agent" : "JS GraphQL"
-        }
-      }
-    }
-
-  },
-
   "endpoints" : [
     {
       "name": "Default",
