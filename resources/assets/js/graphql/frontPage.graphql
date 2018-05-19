@@ -16,4 +16,7 @@ query frontPageQuery ($shows_number: Int!) {
 		type
 		source
 	}
+	text (machine_name: "about_short") {
+		body
+	}
 }

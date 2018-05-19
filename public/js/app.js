@@ -7367,7 +7367,6 @@ Vue.component('modal', __webpack_require__("./resources/assets/js/components/ele
         });
 
         this.$store.dispatch('getAllPress');
-        this.$store.dispatch('getAllTexts');
     },
 
 
@@ -7464,11 +7463,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 //
 //
 //
@@ -7482,45 +7476,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])({
-    ready: 'textsReady'
-  }), {
-    text: function text() {
-      return this.$store.getters.getText('violeta_bio_short');
-    }
-  }),
-  data: function data() {
-    return {
-      placeholderRows: [{
-        height: '15px',
-        boxes: [[0, '100px'], ['10%', 1]]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px']]
-      }, {
-        height: '15px',
-        boxes: [[0, '100px'], ['10%', 2]]
-      }]
-    };
-  },
-
-  components: {
-    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default.a
-  }
+  props: ['dataAboutShort']
 });
 
 /***/ }),
@@ -8227,7 +8185,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 //http://localhost/graphql?query=query+radiosAll{radios{id,title,link}}
 Vue.component('hero', __webpack_require__("./resources/assets/js/components/elements/hero.vue"));
@@ -8246,6 +8203,7 @@ Vue.component('newsletter', __webpack_require__("./resources/assets/js/component
             radios: [],
             shows: [],
             featuredSong: [],
+            aboutShort: [],
             loading: 0,
 
             placeholderRows: [{
@@ -8280,6 +8238,7 @@ Vue.component('newsletter', __webpack_require__("./resources/assets/js/component
                 this.radios = results.data.radios;
                 this.shows = results.data.shows;
                 this.featuredSong = results.data.musics[0];
+                this.aboutShort = results.data.text[0];
             }
         }
     }
@@ -48029,46 +47988,31 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
         _c("div", { staticClass: "columns" }, [
-          _c(
-            "div",
-            { staticClass: "column" },
-            [
-              _c("about"),
-              _vm._v(" "),
-              _vm.loading
-                ? _c(
-                    "div",
-                    [
-                      _c("content-placeholder", {
-                        attrs: { rows: _vm.placeholderRows }
-                      })
-                    ],
-                    1
-                  )
-                : _c(
-                    "div",
-                    [_c("shows", { attrs: { "data-shows": _vm.shows } })],
-                    1
-                  ),
-              _vm._v(" "),
-              _vm.loading
-                ? _c(
-                    "div",
-                    [
-                      _c("content-placeholder", {
-                        attrs: { rows: _vm.placeholderRows }
-                      })
-                    ],
-                    1
-                  )
-                : _c(
-                    "div",
-                    [_c("radios", { attrs: { "data-radios": _vm.radios } })],
-                    1
-                  )
-            ],
-            1
-          ),
+          _c("div", { staticClass: "column" }, [
+            _vm.loading
+              ? _c(
+                  "div",
+                  [
+                    _c("content-placeholder", {
+                      attrs: { rows: _vm.placeholderRows }
+                    })
+                  ],
+                  1
+                )
+              : _c(
+                  "div",
+                  [
+                    _c("about", {
+                      attrs: { "data-about-short": _vm.aboutShort }
+                    }),
+                    _vm._v(" "),
+                    _c("shows", { attrs: { "data-shows": _vm.shows } }),
+                    _vm._v(" "),
+                    _c("radios", { attrs: { "data-radios": _vm.radios } })
+                  ],
+                  1
+                )
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -49351,33 +49295,7 @@ var render = function() {
       _c("h2", { staticClass: "title is-4" }, [_vm._v("About Violeta Skya")]),
       _vm._v(" "),
       _c("div", { staticClass: "content" }, [
-        !_vm.ready
-          ? _c(
-              "div",
-              [
-                _c("content-placeholder", {
-                  attrs: { rows: _vm.placeholderRows }
-                }),
-                _c("br"),
-                _vm._v(" "),
-                _c("content-placeholder", {
-                  attrs: { rows: _vm.placeholderRows }
-                }),
-                _c("br"),
-                _vm._v(" "),
-                _c("content-placeholder", {
-                  attrs: { rows: _vm.placeholderRows }
-                })
-              ],
-              1
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.ready
-          ? _c("div", [
-              _c("span", { domProps: { innerHTML: _vm._s(_vm.text) } })
-            ])
-          : _vm._e()
+        _c("span", { domProps: { innerHTML: _vm._s(_vm.dataAboutShort.body) } })
       ])
     ],
     1
@@ -67005,8 +66923,8 @@ var Form = function () {
 /***/ (function(module, exports) {
 
 
-    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"frontPageQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"radios"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"link"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"shows"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"venue"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"address"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"date"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"musics"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"featured"},"value":{"kind":"BooleanValue","value":true}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"type"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"source"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":203}};
-    doc.loc.source = {"body":"query frontPageQuery ($shows_number: Int!) {\n\tradios {\n\t\tid\n\t\ttitle\n\t\tlink\n\t}\n\tshows (first: $shows_number) {\n\t\tid\n\t\tvenue\n\t\taddress\n\t\tdate\n\t}\n\tmusics (featured: true) {\n\t\tid\n\t\ttitle\n\t\ttype\n\t\tsource\n\t}\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"frontPageQuery"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"radios"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"link"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"shows"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"Variable","name":{"kind":"Name","value":"shows_number"}}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"venue"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"address"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"date"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"musics"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"featured"},"value":{"kind":"BooleanValue","value":true}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"type"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"source"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"text"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"machine_name"},"value":{"kind":"StringValue","value":"about_short","block":false}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":251}};
+    doc.loc.source = {"body":"query frontPageQuery ($shows_number: Int!) {\n\tradios {\n\t\tid\n\t\ttitle\n\t\tlink\n\t}\n\tshows (first: $shows_number) {\n\t\tid\n\t\tvenue\n\t\taddress\n\t\tdate\n\t}\n\tmusics (featured: true) {\n\t\tid\n\t\ttitle\n\t\ttype\n\t\tsource\n\t}\n\ttext (machine_name: \"about_short\") {\n\t\tbody\n\t}\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
   
 
     var names = {};
@@ -67132,8 +67050,6 @@ var Form = function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_press__ = __webpack_require__("./resources/assets/js/store/modules/press.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_texts__ = __webpack_require__("./resources/assets/js/store/modules/texts.js");
-
 
 
 
@@ -67142,8 +67058,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
   modules: {
-    press: __WEBPACK_IMPORTED_MODULE_2__modules_press__["a" /* default */],
-    texts: __WEBPACK_IMPORTED_MODULE_3__modules_texts__["a" /* default */]
+    press: __WEBPACK_IMPORTED_MODULE_2__modules_press__["a" /* default */]
   }
 }));
 
@@ -67216,64 +67131,6 @@ var mutations = (_mutations = {}, _defineProperty(_mutations, 'ADD_PRESS', funct
   state.links = [];
   state.ready = false;
 }), _mutations);
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-  state: state,
-  getters: getters,
-  actions: actions,
-  mutations: mutations
-});
-
-/***/ }),
-
-/***/ "./resources/assets/js/store/modules/texts.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vars__ = __webpack_require__("./resources/assets/js/store/vars.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-// initial state
-var state = {
-  ready: false,
-  texts: []
-
-  // getters
-};var getters = {
-  allTexts: function allTexts(state) {
-    return state.texts;
-  },
-  textsReady: function textsReady(state) {
-    return state.ready;
-  },
-  getText: function getText(state, getters) {
-    return function (keyword) {
-      return state.texts.find(function (text) {
-        return text.machine_name === keyword;
-      }).body;
-    };
-  } //state.texts.map(function(e) { return e.machine_name; }).indexOf('Nick')
-
-  // actions
-};var actions = {
-  getAllTexts: function getAllTexts(_ref) {
-    var commit = _ref.commit;
-
-    axios.get(__WEBPACK_IMPORTED_MODULE_0__vars__["a" /* API_LINK */] + 'texts').then(function (texts) {
-      commit('ADD_TEXTS', { texts: texts });
-    });
-  }
-};
-
-// mutations
-var mutations = _defineProperty({}, 'ADD_TEXTS', function ADD_TEXTS(state, _ref2) {
-  var texts = _ref2.texts;
-
-  state.texts = texts.data.data;
-  state.ready = true;
-});
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   state: state,

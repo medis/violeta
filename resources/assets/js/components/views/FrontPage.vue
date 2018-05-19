@@ -7,17 +7,16 @@
       <div class="columns">
 
         <div class="column">
-          <about></about>
 
           <div v-if="loading">
             <content-placeholder :rows="placeholderRows"></content-placeholder>
           </div>
-          <div v-else><shows :data-shows="shows"></shows></div>
-
-          <div v-if="loading">
-            <content-placeholder :rows="placeholderRows"></content-placeholder>
+          <div v-else>
+            <about :data-about-short="aboutShort"></about>
+            <shows :data-shows="shows"></shows>
+            <radios :data-radios="radios"></radios>
           </div>
-          <div v-else><radios :data-radios="radios"></radios></div>
+
         </div>
 
         <div class="column">
@@ -54,6 +53,7 @@
               radios: [],
               shows: [],
               featuredSong: [],
+              aboutShort: [],
               loading: 0,
 
               placeholderRows: [
@@ -92,6 +92,7 @@
                   this.radios = results.data.radios;
                   this.shows = results.data.shows;
                   this.featuredSong = results.data.musics[0];
+                  this.aboutShort = results.data.text[0];
               }
           }
       }

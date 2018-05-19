@@ -126,7 +126,8 @@ return [
             'query' => [
                 'radios' => 'App\GraphQL\Query\RadiosQuery',
                 'shows' => 'App\GraphQL\Query\ShowsQuery',
-                'musics' => 'App\GraphQL\Query\MusicsQuery'
+                'musics' => 'App\GraphQL\Query\MusicsQuery',
+                'text' => 'App\GraphQL\Query\TextQuery'
             ],
             'mutation' => []
         ]
@@ -183,7 +184,8 @@ return [
     'types' => [
         'Radio' => 'App\GraphQL\Type\RadioType',
         'Show' => 'App\GraphQL\Type\ShowType',
-        'Music' => 'App\GraphQL\Type\MusicType'
+        'Music' => 'App\GraphQL\Type\MusicType',
+        'Text' => 'App\GraphQL\Type\TextType',
     ],
 
     /*
