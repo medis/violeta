@@ -49054,10 +49054,10 @@ var render = function() {
         "a",
         {
           staticClass: "pagination-previous",
-          attrs: { disabled: !_vm.links.prev },
+          attrs: { disabled: !_vm.pagination.prev_page_url },
           on: {
             click: function($event) {
-              _vm.fetchPage(_vm.links.prev)
+              _vm.fetchPage(_vm.pagination.prev_page_url)
             }
           }
         },
@@ -49068,10 +49068,10 @@ var render = function() {
         "a",
         {
           staticClass: "pagination-next",
-          attrs: { disabled: !_vm.links.next },
+          attrs: { disabled: !_vm.pagination.next_page_url },
           on: {
             click: function($event) {
-              _vm.fetchPage(_vm.links.next)
+              _vm.fetchPage(_vm.pagination.next_page_url)
             }
           }
         },
@@ -49081,7 +49081,7 @@ var render = function() {
       _c("ul", { staticClass: "pagination-list" }, [
         _c("li", [
           _c("span", { staticClass: "pagination-link" }, [
-            _vm._v(_vm._s(_vm.pagination.current_page))
+            _vm._v(_vm._s(_vm.pagination.page))
           ])
         ]),
         _vm._v(" "),
@@ -49200,8 +49200,7 @@ var render = function() {
                           [
                             _c("pagination", {
                               attrs: {
-                                pagination: _vm.pagination,
-                                links: _vm.links,
+                                pagination: _vm.shows,
                                 parentName: _vm.id
                               }
                             })

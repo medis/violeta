@@ -20,7 +20,7 @@
 
             <div class="columns">
               <div class="column is-6 is-offset-3">
-                <pagination :pagination="pagination" :links="links" :parentName="id"></pagination>
+                <pagination :pagination="shows" :parentName="id"></pagination>
               </div>
             </div>
           </div>
