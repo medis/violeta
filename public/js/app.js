@@ -49180,12 +49180,12 @@ var render = function() {
                 1
               )
             : _c("div", [
-                _vm.shows.length
+                _vm.shows.data.length
                   ? _c("div", [
                       _c(
                         "div",
                         { staticClass: "box" },
-                        _vm._l(_vm.shows, function(show) {
+                        _vm._l(_vm.shows.data, function(show) {
                           return _c("show", {
                             key: show.id,
                             attrs: { show: show }
@@ -67289,8 +67289,8 @@ var Form = function () {
 /***/ (function(module, exports) {
 
 
-    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"showsPageQuery"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shows"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"venue"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"address"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"date"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":96}};
-    doc.loc.source = {"body":"query showsPageQuery {\n    shows {\n        id\n        venue\n        address\n        date\n    }\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"showsPageQuery"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shows"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"page"},"value":{"kind":"IntValue","value":"1"}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1"}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"venue"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"address"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"date"},"arguments":[],"directives":[]}]}},{"kind":"Field","name":{"kind":"Name","value":"total"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"limit"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"page"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"from"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"to"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"last_page"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"next_page_url"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"prev_page_url"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":289}};
+    doc.loc.source = {"body":"query showsPageQuery {\n    shows (page:1,limit:1) {\n        data {\n            id\n            venue\n            address\n            date\n        },\n        total,\n        limit,\n        page,\n        from,\n        to,\n        last_page,\n        next_page_url,\n        prev_page_url\n    }\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
   
 
     var names = {};

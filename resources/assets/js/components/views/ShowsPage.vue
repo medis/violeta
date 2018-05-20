@@ -13,9 +13,9 @@
 
         <div v-else>
 
-          <div v-if="shows.length">
+          <div v-if="shows.data.length">
             <div class="box">
-              <show v-for="show in shows" :key="show.id" :show="show"></show>
+              <show v-for="show in shows.data" :key="show.id" :show="show"></show>
             </div>
 
             <div class="columns">
