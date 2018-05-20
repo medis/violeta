@@ -1,0 +1,8 @@
+query musicPageQuery {
+    musics {
+        id
+        title
+        type
+        source
+    }
+}

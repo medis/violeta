@@ -1,0 +1,8 @@
+query showsPageQuery {
+    shows {
+        id
+        venue
+        address
+        date
+    }
+}

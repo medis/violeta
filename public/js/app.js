@@ -8255,11 +8255,10 @@ Vue.component('newsletter', __webpack_require__("./resources/assets/js/component
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_musicPage_graphql__ = __webpack_require__("./resources/assets/js/graphql/musicPage.graphql");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_musicPage_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__graphql_musicPage_graphql__);
 //
 //
 //
@@ -8305,17 +8304,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])({
-    music: 'allMusic',
-    ready: 'musicReady'
-  }), {
+  computed: {
     chunkedVideos: function chunkedVideos() {
-      return chunk(this.music, 4);
+      return chunk(this.musics, 4);
     }
-  }),
+  },
 
   data: function data() {
     return {
+      loading: 0,
+      musics: [],
       id: "component_" + this._uid,
       placeholderRows: [{
         height: '15px',
@@ -8335,7 +8333,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
   components: {
-    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default.a
+    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder___default.a
+  },
+
+  apollo: {
+    musics: {
+      query: __WEBPACK_IMPORTED_MODULE_1__graphql_musicPage_graphql___default.a
+    }
   },
 
   methods: {
@@ -8525,9 +8529,10 @@ Vue.component('pagination', __webpack_require__("./resources/assets/js/component
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_showsPage_graphql__ = __webpack_require__("./resources/assets/js/graphql/showsPage.graphql");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_showsPage_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__graphql_showsPage_graphql__);
 //
 //
 //
@@ -8579,17 +8584,10 @@ Vue.component('pagination', __webpack_require__("./resources/assets/js/component
       return _this.$store.dispatch('changeShowsPage', link);
     });
   },
-
-
-  computed: Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])({
-    shows: 'allShows',
-    pagination: 'showsPager',
-    links: 'showsLinks',
-    ready: 'showsReady'
-  }),
-
   data: function data() {
     return {
+      loading: 0,
+      shows: [],
       id: "component_" + this._uid,
       placeholderRows: [{
         height: '15px',
@@ -8607,8 +8605,15 @@ Vue.component('pagination', __webpack_require__("./resources/assets/js/component
     };
   },
 
+
+  apollo: {
+    shows: {
+      query: __WEBPACK_IMPORTED_MODULE_1__graphql_showsPage_graphql___default.a
+    }
+  },
+
   components: {
-    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default.a
+    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder___default.a
   }
 });
 
@@ -48592,7 +48597,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
         _c("section", { staticClass: "section" }, [
-          !_vm.ready
+          _vm.loading
             ? _c(
                 "div",
                 [
@@ -48612,10 +48617,7 @@ var render = function() {
                 ],
                 1
               )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.ready
-            ? _c(
+            : _c(
                 "div",
                 _vm._l(_vm.chunkedVideos, function(videos) {
                   return _c(
@@ -48638,7 +48640,6 @@ var render = function() {
                   )
                 })
               )
-            : _vm._e()
         ])
       ])
     ],
@@ -49158,7 +49159,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
         _c("section", { staticClass: "section" }, [
-          !_vm.ready
+          _vm.loading
             ? _c(
                 "div",
                 [
@@ -49178,10 +49179,7 @@ var render = function() {
                 ],
                 1
               )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.ready
-            ? _c("div", [
+            : _c("div", [
                 _vm.shows.length
                   ? _c("div", [
                       _c(
@@ -49214,7 +49212,6 @@ var render = function() {
                     ])
                   : _c("div", [_vm._v("Soon")])
               ])
-            : _vm._e()
         ])
       ])
     ],
@@ -67160,6 +67157,252 @@ var Form = function () {
     module.exports = doc;
     
         module.exports["frontPageQuery"] = oneQuery(doc, "frontPageQuery");
+        
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/graphql/musicPage.graphql":
+/***/ (function(module, exports) {
+
+
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"musicPageQuery"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"musics"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"title"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"type"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"source"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":96}};
+    doc.loc.source = {"body":"query musicPageQuery {\n    musics {\n        id\n        title\n        type\n        source\n    }\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+  
+
+    var names = {};
+    function unique(defs) {
+      return defs.filter(
+        function(def) {
+          if (def.kind !== 'FragmentDefinition') return true;
+          var name = def.name.value
+          if (names[name]) {
+            return false;
+          } else {
+            names[name] = true;
+            return true;
+          }
+        }
+      )
+    }
+  
+
+    // Collect any fragment/type references from a node, adding them to the refs Set
+    function collectFragmentReferences(node, refs) {
+      if (node.kind === "FragmentSpread") {
+        refs.add(node.name.value);
+      } else if (node.kind === "VariableDefinition") {
+        var type = node.type;
+        if (type.kind === "NamedType") {
+          refs.add(type.name.value);
+        }
+      }
+
+      if (node.selectionSet) {
+        node.selectionSet.selections.forEach(function(selection) {
+          collectFragmentReferences(selection, refs);
+        });
+      }
+
+      if (node.variableDefinitions) {
+        node.variableDefinitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+
+      if (node.definitions) {
+        node.definitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+    }
+
+    var definitionRefs = {};
+    (function extractReferences() {
+      doc.definitions.forEach(function(def) {
+        if (def.name) {
+          var refs = new Set();
+          collectFragmentReferences(def, refs);
+          definitionRefs[def.name.value] = refs;
+        }
+      });
+    })();
+
+    function findOperation(doc, name) {
+      for (var i = 0; i < doc.definitions.length; i++) {
+        var element = doc.definitions[i];
+        if (element.name && element.name.value == name) {
+          return element;
+        }
+      }
+    }
+
+    function oneQuery(doc, operationName) {
+      // Copy the DocumentNode, but clear out the definitions
+      var newDoc = {
+        kind: doc.kind,
+        definitions: [findOperation(doc, operationName)]
+      };
+      if (doc.hasOwnProperty("loc")) {
+        newDoc.loc = doc.loc;
+      }
+
+      // Now, for the operation we're running, find any fragments referenced by
+      // it or the fragments it references
+      var opRefs = definitionRefs[operationName] || new Set();
+      var allRefs = new Set();
+      var newRefs = new Set(opRefs);
+      while (newRefs.size > 0) {
+        var prevRefs = newRefs;
+        newRefs = new Set();
+
+        prevRefs.forEach(function(refName) {
+          if (!allRefs.has(refName)) {
+            allRefs.add(refName);
+            var childRefs = definitionRefs[refName] || new Set();
+            childRefs.forEach(function(childRef) {
+              newRefs.add(childRef);
+            });
+          }
+        });
+      }
+
+      allRefs.forEach(function(refName) {
+        var op = findOperation(doc, refName);
+        if (op) {
+          newDoc.definitions.push(op);
+        }
+      });
+
+      return newDoc;
+    }
+
+    module.exports = doc;
+    
+        module.exports["musicPageQuery"] = oneQuery(doc, "musicPageQuery");
+        
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/graphql/showsPage.graphql":
+/***/ (function(module, exports) {
+
+
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"showsPageQuery"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"shows"},"arguments":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"venue"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"address"},"arguments":[],"directives":[]},{"kind":"Field","name":{"kind":"Name","value":"date"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":96}};
+    doc.loc.source = {"body":"query showsPageQuery {\n    shows {\n        id\n        venue\n        address\n        date\n    }\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+  
+
+    var names = {};
+    function unique(defs) {
+      return defs.filter(
+        function(def) {
+          if (def.kind !== 'FragmentDefinition') return true;
+          var name = def.name.value
+          if (names[name]) {
+            return false;
+          } else {
+            names[name] = true;
+            return true;
+          }
+        }
+      )
+    }
+  
+
+    // Collect any fragment/type references from a node, adding them to the refs Set
+    function collectFragmentReferences(node, refs) {
+      if (node.kind === "FragmentSpread") {
+        refs.add(node.name.value);
+      } else if (node.kind === "VariableDefinition") {
+        var type = node.type;
+        if (type.kind === "NamedType") {
+          refs.add(type.name.value);
+        }
+      }
+
+      if (node.selectionSet) {
+        node.selectionSet.selections.forEach(function(selection) {
+          collectFragmentReferences(selection, refs);
+        });
+      }
+
+      if (node.variableDefinitions) {
+        node.variableDefinitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+
+      if (node.definitions) {
+        node.definitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+    }
+
+    var definitionRefs = {};
+    (function extractReferences() {
+      doc.definitions.forEach(function(def) {
+        if (def.name) {
+          var refs = new Set();
+          collectFragmentReferences(def, refs);
+          definitionRefs[def.name.value] = refs;
+        }
+      });
+    })();
+
+    function findOperation(doc, name) {
+      for (var i = 0; i < doc.definitions.length; i++) {
+        var element = doc.definitions[i];
+        if (element.name && element.name.value == name) {
+          return element;
+        }
+      }
+    }
+
+    function oneQuery(doc, operationName) {
+      // Copy the DocumentNode, but clear out the definitions
+      var newDoc = {
+        kind: doc.kind,
+        definitions: [findOperation(doc, operationName)]
+      };
+      if (doc.hasOwnProperty("loc")) {
+        newDoc.loc = doc.loc;
+      }
+
+      // Now, for the operation we're running, find any fragments referenced by
+      // it or the fragments it references
+      var opRefs = definitionRefs[operationName] || new Set();
+      var allRefs = new Set();
+      var newRefs = new Set(opRefs);
+      while (newRefs.size > 0) {
+        var prevRefs = newRefs;
+        newRefs = new Set();
+
+        prevRefs.forEach(function(refName) {
+          if (!allRefs.has(refName)) {
+            allRefs.add(refName);
+            var childRefs = definitionRefs[refName] || new Set();
+            childRefs.forEach(function(childRef) {
+              newRefs.add(childRef);
+            });
+          }
+        });
+      }
+
+      allRefs.forEach(function(refName) {
+        var op = findOperation(doc, refName);
+        if (op) {
+          newDoc.definitions.push(op);
+        }
+      });
+
+      return newDoc;
+    }
+
+    module.exports = doc;
+    
+        module.exports["showsPageQuery"] = oneQuery(doc, "showsPageQuery");
         
 
 

@@ -5,13 +5,13 @@
     <div class="container">
       <section class="section">
 
-        <div v-if="!ready">
+        <div v-if="loading">
           <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
           <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
           <content-placeholder :rows="placeholderRows"></content-placeholder>
         </div>
 
-        <div v-if="ready">
+        <div v-else>
 
           <div v-if="shows.length">
             <div class="box">
@@ -35,8 +35,8 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
   import ContentPlaceholder from 'vue-content-placeholder';
+  import SHOWS_PAGE_QUERY from '../../graphql/showsPage.graphql'
 
   Vue.component('show', require('../elements/show.vue'));
   Vue.component('pagination', require('../elements/pagination.vue'));
@@ -46,15 +46,10 @@
       Event.$on(this.id + "_changePage", (link) => this.$store.dispatch('changeShowsPage', link));
     },
 
-    computed: mapGetters({
-      shows: 'allShows',
-      pagination: 'showsPager',
-      links: 'showsLinks',
-      ready: 'showsReady'
-    }),
-
     data() {
       return {
+        loading: 0,
+        shows: [],
         id: "component_" + this._uid,
         placeholderRows: [
           {
@@ -76,6 +71,13 @@
         ]
       }
     },
+
+    apollo: {
+      shows: {
+        query: SHOWS_PAGE_QUERY
+      }
+    },
+
     components: {
         ContentPlaceholder
     }
