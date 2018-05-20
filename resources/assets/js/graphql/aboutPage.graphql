@@ -1,0 +1,5 @@
+query aboutPageQuery {
+    text (machine_name: "about_long") {
+        body
+    }
+}

@@ -7963,11 +7963,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__("./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder__);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__ = __webpack_require__("./node_modules/vue-content-placeholder/dist/vue-content-placeholder.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_aboutPage_graphql__ = __webpack_require__("./resources/assets/js/graphql/aboutPage.graphql");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__graphql_aboutPage_graphql___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__graphql_aboutPage_graphql__);
 //
 //
 //
@@ -7996,15 +7995,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapGetters */])({
-    ready: 'textsReady'
-  }), {
-    text: function text() {
-      return this.$store.getters.getText('violeta_bio_long');
-    }
-  }),
   data: function data() {
     return {
+      text: [],
+      loading: 0,
       placeholderRows: [{
         height: '15px',
         boxes: [[0, '100px'], ['10%', 1]]
@@ -8018,8 +8012,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
+  computed: {
+    body: function body() {
+      return this.text[0].body;
+    }
+  },
+  apollo: {
+    text: {
+      query: __WEBPACK_IMPORTED_MODULE_1__graphql_aboutPage_graphql___default.a
+    }
+  },
   components: {
-    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_1_vue_content_placeholder___default.a
+    ContentPlaceholder: __WEBPACK_IMPORTED_MODULE_0_vue_content_placeholder___default.a
   }
 });
 
@@ -49623,7 +49627,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
         _c("section", { staticClass: "section content" }, [
-          !_vm.ready
+          _vm.loading
             ? _c(
                 "div",
                 [
@@ -49643,13 +49647,9 @@ var render = function() {
                 ],
                 1
               )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.ready
-            ? _c("div", [
-                _c("span", { domProps: { innerHTML: _vm._s(_vm.text) } })
+            : _c("div", [
+                _c("span", { domProps: { innerHTML: _vm._s(_vm.body) } })
               ])
-            : _vm._e()
         ])
       ])
     ],
@@ -66915,6 +66915,129 @@ var Form = function () {
     return Form;
 }();
 
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/graphql/aboutPage.graphql":
+/***/ (function(module, exports) {
+
+
+    var doc = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"aboutPageQuery"},"variableDefinitions":[],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"text"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"machine_name"},"value":{"kind":"StringValue","value":"about_long","block":false}}],"directives":[],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"body"},"arguments":[],"directives":[]}]}}]}}],"loc":{"start":0,"end":83}};
+    doc.loc.source = {"body":"query aboutPageQuery {\n    text (machine_name: \"about_long\") {\n        body\n    }\n}","name":"GraphQL request","locationOffset":{"line":1,"column":1}};
+  
+
+    var names = {};
+    function unique(defs) {
+      return defs.filter(
+        function(def) {
+          if (def.kind !== 'FragmentDefinition') return true;
+          var name = def.name.value
+          if (names[name]) {
+            return false;
+          } else {
+            names[name] = true;
+            return true;
+          }
+        }
+      )
+    }
+  
+
+    // Collect any fragment/type references from a node, adding them to the refs Set
+    function collectFragmentReferences(node, refs) {
+      if (node.kind === "FragmentSpread") {
+        refs.add(node.name.value);
+      } else if (node.kind === "VariableDefinition") {
+        var type = node.type;
+        if (type.kind === "NamedType") {
+          refs.add(type.name.value);
+        }
+      }
+
+      if (node.selectionSet) {
+        node.selectionSet.selections.forEach(function(selection) {
+          collectFragmentReferences(selection, refs);
+        });
+      }
+
+      if (node.variableDefinitions) {
+        node.variableDefinitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+
+      if (node.definitions) {
+        node.definitions.forEach(function(def) {
+          collectFragmentReferences(def, refs);
+        });
+      }
+    }
+
+    var definitionRefs = {};
+    (function extractReferences() {
+      doc.definitions.forEach(function(def) {
+        if (def.name) {
+          var refs = new Set();
+          collectFragmentReferences(def, refs);
+          definitionRefs[def.name.value] = refs;
+        }
+      });
+    })();
+
+    function findOperation(doc, name) {
+      for (var i = 0; i < doc.definitions.length; i++) {
+        var element = doc.definitions[i];
+        if (element.name && element.name.value == name) {
+          return element;
+        }
+      }
+    }
+
+    function oneQuery(doc, operationName) {
+      // Copy the DocumentNode, but clear out the definitions
+      var newDoc = {
+        kind: doc.kind,
+        definitions: [findOperation(doc, operationName)]
+      };
+      if (doc.hasOwnProperty("loc")) {
+        newDoc.loc = doc.loc;
+      }
+
+      // Now, for the operation we're running, find any fragments referenced by
+      // it or the fragments it references
+      var opRefs = definitionRefs[operationName] || new Set();
+      var allRefs = new Set();
+      var newRefs = new Set(opRefs);
+      while (newRefs.size > 0) {
+        var prevRefs = newRefs;
+        newRefs = new Set();
+
+        prevRefs.forEach(function(refName) {
+          if (!allRefs.has(refName)) {
+            allRefs.add(refName);
+            var childRefs = definitionRefs[refName] || new Set();
+            childRefs.forEach(function(childRef) {
+              newRefs.add(childRef);
+            });
+          }
+        });
+      }
+
+      allRefs.forEach(function(refName) {
+        var op = findOperation(doc, refName);
+        if (op) {
+          newDoc.definitions.push(op);
+        }
+      });
+
+      return newDoc;
+    }
+
+    module.exports = doc;
+    
+        module.exports["aboutPageQuery"] = oneQuery(doc, "aboutPageQuery");
+        
 
 
 /***/ }),
