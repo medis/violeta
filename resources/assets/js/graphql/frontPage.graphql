@@ -4,11 +4,13 @@ query frontPageQuery ($shows_number: Int!) {
 		title
 		link
 	}
-	shows (first: $shows_number) {
-		id
-		venue
-		address
-		date
+	shows (page: 1, limit: $shows_number) {
+		data {
+			id
+			venue
+			address
+			date
+		}
 	}
 	musics (featured: true) {
 		id

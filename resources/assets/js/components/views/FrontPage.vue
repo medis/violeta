@@ -90,7 +90,7 @@
               manual: true,
               result(results) {
                   this.radios = results.data.radios;
-                  this.shows = results.data.shows;
+                  this.shows = results.data.shows.data;
                   this.featuredSong = results.data.musics[0];
                   this.aboutShort = results.data.text[0];
               }
