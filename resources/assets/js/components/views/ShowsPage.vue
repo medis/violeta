@@ -20,7 +20,7 @@
 
             <div class="columns">
               <div class="column is-6 is-offset-3">
-                <pagination :pagination="shows" :parentName="id"></pagination>
+                <pagination :pagination="shows" :parentName="id" @next="next" @prev="prev"></pagination>
               </div>
             </div>
           </div>
@@ -50,6 +50,8 @@
       return {
         loading: 0,
         shows: [],
+        page: 1,
+        limit: 10,
         id: "component_" + this._uid,
         placeholderRows: [
           {
@@ -74,7 +76,22 @@
 
     apollo: {
       shows: {
-        query: SHOWS_PAGE_QUERY
+        query: SHOWS_PAGE_QUERY,
+        variables() {
+          return {
+            page: this.page,
+            limit: this.limit
+          }
+        },
+      }
+    },
+
+    methods: {
+      next: function() {
+        this.page++;
+      },
+      prev: function() {
+        this.page--;
       }
     },
 

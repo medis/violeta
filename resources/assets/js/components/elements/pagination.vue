@@ -1,11 +1,11 @@
 <template>
   <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-    <a class="pagination-previous" @click="fetchPage(pagination.prev_page_url)"
-            :disabled="!pagination.prev_page_url">Previous
+    <a class="pagination-previous" @click="emitPrev"
+            v-show="pagination.prev_page_url">Previous
     </a>
 
-    <a class="pagination-next" @click="fetchPage(pagination.next_page_url)"
-            :disabled="!pagination.next_page_url">Next
+    <a class="pagination-next" @click="emitNext"
+            v-show="pagination.next_page_url">Next
     </a>
 
     <ul class="pagination-list">
@@ -21,10 +21,12 @@ export default {
   props: ['pagination', 'links', 'parentName'],
 
   methods: {
-    fetchPage(link) {
-      if (link !== undefined) {
-        Event.$emit(this.parentName + "_changePage", link);
-      }
+    emitNext() {
+      this.$emit("next");
+    },
+
+    emitPrev() {
+      this.$emit("prev");
     }
   }
 }

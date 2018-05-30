@@ -1,5 +1,5 @@
-query showsPageQuery {
-    shows (page:1,limit:1) {
+query showsPageQuery ($page: Int!, $limit: Int!) {
+    shows (page: $page, limit: $limit) {
         data {
             id
             venue
