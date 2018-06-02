@@ -27,8 +27,6 @@
         created() {
             Event.$on('close', () => this.showModal = false );
             Event.$on('open', (data) => this.openDialog(data) );
-
-            this.$store.dispatch('getAllPress');
         },
 
         methods: {

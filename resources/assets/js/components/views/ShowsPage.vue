@@ -20,7 +20,7 @@
 
             <div class="columns">
               <div class="column is-6 is-offset-3">
-                <pagination :pagination="shows" :parentName="id" @next="next" @prev="prev"></pagination>
+                <pagination :pagination="shows" @next="next" @prev="prev"></pagination>
               </div>
             </div>
           </div>
@@ -42,17 +42,12 @@
   Vue.component('pagination', require('../elements/pagination.vue'));
 
   export default {
-    created() {
-      Event.$on(this.id + "_changePage", (link) => this.$store.dispatch('changeShowsPage', link));
-    },
-
     data() {
       return {
         loading: 0,
         shows: [],
         page: 1,
         limit: 10,
-        id: "component_" + this._uid,
         placeholderRows: [
           {
             height: '15px',

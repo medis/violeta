@@ -1,0 +1,19 @@
+query pressPageQuery ($page: Int!, $limit: Int!) {
+    press (page: $page, limit: $limit) {
+        data {
+            id
+            title
+            source
+            link
+            date
+        },
+        total,
+        limit,
+        page,
+        from,
+        to,
+        last_page,
+        next_page_url,
+        prev_page_url
+    }
+}

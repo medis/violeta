@@ -5,27 +5,28 @@
     <div class="container">
       <section class="section">
 
-        <div v-if="!ready">
+        <div v-if="loading">
           <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
           <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
           <content-placeholder :rows="placeholderRows"></content-placeholder>
         </div>
 
-        <div v-if="ready">
+        <div v-else>
 
-          <div v-if="press.length">
+          <div v-if="press.data.length">
             <div class="box">
-              <press v-for="article in press" :key="article.id" :article="article"></press>
+              <press v-for="article in press.data" :key="article.id" :article="article"></press>
             </div>
 
             <div class="columns">
               <div class="column is-6 is-offset-3">
-                <pagination :pagination="pagination"  :links="links" :parentName="id"></pagination>
+                <pagination :pagination="press" @next="next" @prev="prev"></pagination>
               </div>
             </div>
           </div>
 
           <div v-else>Soon</div>
+
         </div>
 
       </section>
@@ -35,27 +36,19 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
-  import ContentPlaceholder from 'vue-content-placeholder';
+    import PRESS_PAGE_QUERY from '../../graphql/pressPage.graphql';
+    import ContentPlaceholder from 'vue-content-placeholder';
 
   Vue.component('press', require('../elements/press.vue'));
   Vue.component('pagination', require('../elements/pagination.vue'));
 
   export default {
-    created() {
-      Event.$on(this.id + "_changePage", (link) => this.$store.dispatch('changePressPage', link));
-    },
-
-    computed: mapGetters({
-      press: 'allPress',
-      pagination: 'pressPager',
-      links: 'pressLinks',
-      ready: 'pressReady'
-    }),
-
     data() {
       return {
-        id: "component_" + this._uid,
+        loading: 0,
+        press: [],
+        page: 1,
+        limit: 20,
         placeholderRows: [
           {
             height: '15px',
@@ -76,6 +69,28 @@
         ]
       }
     },
+
+    apollo: {
+      press: {
+        query: PRESS_PAGE_QUERY,
+        variables() {
+          return {
+            page: this.page,
+            limit: this.limit
+          }
+        },
+      }
+    },
+
+    methods: {
+      next: function() {
+        this.page++;
+      },
+      prev: function() {
+        this.page--;
+      }
+    },
+
     components: {
         ContentPlaceholder
     }

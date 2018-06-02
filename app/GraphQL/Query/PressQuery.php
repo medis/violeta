@@ -2,31 +2,27 @@
 
 namespace App\GraphQL\Query;
 
-use App\GraphQL\Type\PaginationType;
 use GraphQL;
+use App\GraphQL\Type\PaginationType;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
-use App\Show;
+use App\Press;
 
-class ShowsQuery extends Query
+class PressQuery extends Query
 {
     protected $attributes = [
-        'name' => 'shows'
+        'name' => 'press'
     ];
 
     public function type()
     {
-        return new PaginationType('Show');
+        return new PaginationType('Press');
     }
 
 
     public function args()
     {
         return [
-            'first' => [
-                'name' => 'first',
-                'type' => Type::int()
-            ],
             'page' => [
                 'name' => 'page',
                 'type' => Type::int(),
@@ -42,10 +38,6 @@ class ShowsQuery extends Query
 
     public function resolve($root, $args)
     {
-        if (isset($args['first'])) {
-            return Show::take($args['first'])->get();
-        }
-
-        return Show::paginate($args['limit'] ?? 20, ['*'], 'page', $args['page'] ?? 0);
+        return Press::paginate($args['limit'] ?? 20, ['*'], 'page', $args['page'] ?? 0);
     }
 }
