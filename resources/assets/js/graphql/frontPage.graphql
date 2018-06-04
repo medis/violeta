@@ -1,0 +1,24 @@
+query frontPageQuery ($shows_number: Int!) {
+	radios {
+		id
+		title
+		link
+	}
+	shows (page: 1, limit: $shows_number) {
+		data {
+			id
+			venue
+			address
+			date
+		}
+	}
+	musics (featured: true) {
+		id
+		title
+		type
+		source
+	}
+	text (machine_name: "about_short") {
+		body
+	}
+}

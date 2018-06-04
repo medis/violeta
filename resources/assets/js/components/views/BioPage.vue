@@ -5,14 +5,14 @@
     <div class="container">
       <section class="section content">
 
-      <div v-if="!ready">
+      <div v-if="loading">
         <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
         <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
         <content-placeholder :rows="placeholderRows"></content-placeholder>
       </div>
 
-      <div v-if="ready">
-        <span v-html="text"></span>
+      <div v-else>
+        <span v-html="body"></span>
       </div>
 
       </section>
@@ -22,20 +22,15 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
 import ContentPlaceholder from 'vue-content-placeholder';
+import ABOUT_PAGE_QUERY from '../../graphql/aboutPage.graphql'
 
 export default {
-  computed: {
-    ...mapGetters({
-      ready: 'textsReady'
-    }),
-    text() {
-      return this.$store.getters.getText('violeta_bio_long')
-    }
-  },
+
   data() {
     return {
+      text: [],
+      loading: 0,
       placeholderRows: [
         {
           height: '15px',
@@ -50,6 +45,16 @@ export default {
           boxes:[[0, '100px'], ['10%', 2]]
         }
       ]
+    }
+  },
+  computed: {
+    body: function() {
+        return this.text[0].body;
+    }
+  },
+  apollo: {
+    text: {
+      query: ABOUT_PAGE_QUERY
     }
   },
   components: {

@@ -1,0 +1,15 @@
+{
+
+  "endpoints" : [
+    {
+      "name": "Default",
+      "url": "http://localhost/graphql",
+      "options" : {
+        "headers": {
+          "user-agent" : "JS GraphQL"
+        }
+      }
+    }
+  ]
+
+}

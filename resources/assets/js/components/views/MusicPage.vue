@@ -5,13 +5,13 @@
     <div class="container">
       <section class="section">
 
-        <div v-if="!ready">
+        <div v-if="loading">
           <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
           <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
           <content-placeholder :rows="placeholderRows"></content-placeholder>
         </div>
 
-        <div v-if="ready">
+        <div v-else>
 
           <div class="columns" v-for="videos in chunkedVideos">
               <div class="column" :class="getClass(videos)" v-for="video in videos">
@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
 import ContentPlaceholder from 'vue-content-placeholder';
+import MUSIC_PAGE_QUERY from '../../graphql/musicPage.graphql'
 
 export default {
   created() {
@@ -39,17 +39,15 @@ export default {
   },
 
   computed: {
-    ...mapGetters({
-      music: 'allMusic',
-      ready: 'musicReady'
-    }),
     chunkedVideos() {
-      return chunk(this.music, 4)
+      return chunk(this.musics, 4)
     },
   },
 
   data() {
     return {
+      loading: 0,
+      musics: [],
       id: "component_" + this._uid,
       placeholderRows: [
         {
@@ -74,6 +72,12 @@ export default {
 
   components: {
       ContentPlaceholder
+  },
+
+  apollo: {
+    musics: {
+      query: MUSIC_PAGE_QUERY
+    }
   },
 
   methods: {

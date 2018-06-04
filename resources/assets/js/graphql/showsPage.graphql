@@ -1,0 +1,18 @@
+query showsPageQuery ($page: Int!, $limit: Int!) {
+    shows (page: $page, limit: $limit) {
+        data {
+            id
+            venue
+            address
+            date
+        },
+        total,
+        limit,
+        page,
+        from,
+        to,
+        last_page,
+        next_page_url,
+        prev_page_url
+    }
+}

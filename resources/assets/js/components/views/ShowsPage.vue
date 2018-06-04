@@ -5,22 +5,22 @@
     <div class="container">
       <section class="section">
 
-        <div v-if="!ready">
+        <div v-if="loading">
           <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
           <content-placeholder :rows="placeholderRows"></content-placeholder><br/>
           <content-placeholder :rows="placeholderRows"></content-placeholder>
         </div>
 
-        <div v-if="ready">
+        <div v-else>
 
-          <div v-if="shows.length">
+          <div v-if="shows.data.length">
             <div class="box">
-              <show v-for="show in shows" :key="show.id" :show="show"></show>
+              <show v-for="show in shows.data" :key="show.id" :show="show"></show>
             </div>
 
             <div class="columns">
               <div class="column is-6 is-offset-3">
-                <pagination :pagination="pagination" :links="links" :parentName="id"></pagination>
+                <pagination :pagination="shows" @next="next" @prev="prev"></pagination>
               </div>
             </div>
           </div>
@@ -35,27 +35,19 @@
 </template>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
   import ContentPlaceholder from 'vue-content-placeholder';
+  import SHOWS_PAGE_QUERY from '../../graphql/showsPage.graphql'
 
   Vue.component('show', require('../elements/show.vue'));
   Vue.component('pagination', require('../elements/pagination.vue'));
 
   export default {
-    created() {
-      Event.$on(this.id + "_changePage", (link) => this.$store.dispatch('changeShowsPage', link));
-    },
-
-    computed: mapGetters({
-      shows: 'allShows',
-      pagination: 'showsPager',
-      links: 'showsLinks',
-      ready: 'showsReady'
-    }),
-
     data() {
       return {
-        id: "component_" + this._uid,
+        loading: 0,
+        shows: [],
+        page: 1,
+        limit: 10,
         placeholderRows: [
           {
             height: '15px',
@@ -76,6 +68,28 @@
         ]
       }
     },
+
+    apollo: {
+      shows: {
+        query: SHOWS_PAGE_QUERY,
+        variables() {
+          return {
+            page: this.page,
+            limit: this.limit
+          }
+        },
+      }
+    },
+
+    methods: {
+      next: function() {
+        this.page++;
+      },
+      prev: function() {
+        this.page--;
+      }
+    },
+
     components: {
         ContentPlaceholder
     }
