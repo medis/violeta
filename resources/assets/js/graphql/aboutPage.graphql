@@ -1,5 +1,5 @@
 query aboutPageQuery {
-    text (machine_name: "about_long") {
+    text (machine_name: "violeta_bio_long") {
         body
     }
 }

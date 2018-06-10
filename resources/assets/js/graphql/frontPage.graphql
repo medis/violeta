@@ -18,7 +18,7 @@ query frontPageQuery ($shows_number: Int!) {
 		type
 		source
 	}
-	text (machine_name: "about_short") {
+	text (machine_name: "violeta_bio_short") {
 		body
 	}
 }
