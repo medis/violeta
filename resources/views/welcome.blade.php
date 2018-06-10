@@ -16,9 +16,9 @@
 
         <!-- Scripts -->
         <script>
-            window.Laravel = {!! json_encode([
-                'csrfToken' => csrf_token(),
-            ]) !!};
+            window.Laravel = @json(array_merge($variables, [
+                'csrfToken' => csrf_token()
+            ]));
         </script>
 
     </head>

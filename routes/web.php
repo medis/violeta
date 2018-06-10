@@ -28,4 +28,5 @@ Route::middleware(['auth','web'])
 });
 
 // Point all non api links to SPA entry point.
-Route::view('/{vue?}', 'welcome')->where('vue', '^(?!.*api).*$[\/\w\.-]*');
+//Route::view('/{vue?}', 'welcome')->where('vue', '^(?!.*api).*$[\/\w\.-]*');
+Route::get('/{vue?}', 'HomeController@index')->where('vue', '^(?!.*api).*$[\/\w\.-]*');

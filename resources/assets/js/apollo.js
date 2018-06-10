@@ -6,7 +6,7 @@ import VueApollo from 'vue-apollo'
 
 const httpLink = new HttpLink({
     // You should use an absolute URL here
-    uri: 'http://localhost/graphql',
+    uri: Laravel.APP_URL + '/graphql',
 })
 
 // Create the apollo client
