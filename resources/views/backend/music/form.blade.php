@@ -40,6 +40,11 @@
         <div class="w-5/6">{{ Form::checkbox('featured') }}</div>
     </div>
 
+    <div class="col-sm-12 mb-4 flex flex-inline">
+        <div class="w-1/6 justify-center flex-col flex text-xl">{{ Form::label('weight', 'Weight') }}</div>
+        <div class="w-5/6">{{ Form::text('weight', null, ['class' => 'field']) }}</div>
+    </div>
+
     <div class="{{ !$vars['entity']->id ? 'hidden' : '' }}">
         <div class="col-sm-12 mb-4 flex flex-inline">
             <div class="w-1/6 justify-center flex-col flex text-xl">{{ Form::label('enabled', 'Enabled') }}</div>

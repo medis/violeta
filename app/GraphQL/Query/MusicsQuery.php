@@ -35,6 +35,6 @@ class MusicsQuery extends Query
             return Music::where('featured', $args['featured'])->get();
         }
 
-        return Music::all();
+        return Music::ordered('desc')->get();
     }
 }

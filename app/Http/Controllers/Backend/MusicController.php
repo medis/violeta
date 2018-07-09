@@ -26,7 +26,7 @@ class MusicController extends Controller
      */
     public function index()
     {
-        $music = $this->music->orderBy('updated_at', 'desc')->paginate(30);
+        $music = $this->music->ordered('desc')->orderBy('updated_at', 'desc')->paginate(30);
 
         return view('backend.music.index', compact('music'));
     }
@@ -68,7 +68,8 @@ class MusicController extends Controller
             'title' => $request->title,
             'source' => $code,
             'type' => $request->type,
-            'featured' => $request->get('featured') ? true : false
+            'featured' => $request->get('featured') ? true : false,
+            'weight' => $request->get('weight')
         ]);
 
         return redirect()->route('backend.music.index')->with('status', 'Song created.');
@@ -113,6 +114,7 @@ class MusicController extends Controller
         $music->type = $request->type;
         $music->featured = $request->get('featured') ? true : false;
         $music->enabled = $request->get('enabled') ? true : false;
+        $music->weight = $request->weight;
         $music->save();
 
         return redirect()->route('backend.music.index')->with('status', 'Song updated.');

@@ -47,6 +47,7 @@ class StoreMusic extends FormRequest
             'type' => ['required',
                 Rule::in($this->music->getTypes()),
             ],
+            'weight' => 'numeric'
         ];
     }
 

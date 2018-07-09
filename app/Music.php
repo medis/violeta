@@ -5,9 +5,17 @@ namespace App;
 use App\Presenters\Music\UrlPresenter;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use medis\Sortable\Sortable;
+use medis\Sortable\SortableTrait;
 
-class Music extends BaseModel
+class Music extends BaseModel implements Sortable
 {
+    use SortableTrait;
+
+    public $sortable = [
+        'order_column' => 'weight'
+    ];
+
     protected $fillable = ['title', 'type', 'source', 'featured'];
 
     protected static $types = [
