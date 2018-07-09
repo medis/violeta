@@ -1,0 +1,15 @@
+@media all and (min-width: $tablet) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+    .small {
+      grid-column: span 2;
+    }
+
+    .big {
+      grid-column: span 4;
+      grid-row: span 2;
+    }
+  }
+}

@@ -4,5 +4,6 @@ query musicPageQuery {
         title
         type
         source
+        big
     }
 }

@@ -13,12 +13,10 @@
 
         <div v-else>
 
-          <div class="columns" v-for="videos in chunkedVideos">
-              <div class="column" :class="getClass(videos)" v-for="video in videos">
-                <div class="box is-paddingless video-wrapper">
-                  <single-video :data="video"></single-video>
-                </div>
-            </div>
+          <div class="videos grid">
+            <figure v-for="(video, i) in musics" :key="i" :class="getClass(video)">
+              <single-video :data="video"></single-video>
+            </figure>
           </div>
 
         </div>
@@ -36,23 +34,6 @@ import MUSIC_PAGE_QUERY from '../../graphql/musicPage.graphql'
 export default {
   created() {
     Event.$on(this.id + "_changePage", (link) => this.$store.dispatch('changeMusicPage', link));
-  },
-
-  computed: {
-    chunkedVideos() {
-        /*
-        var chunks = [],
-      i = 0,
-      n = arr.length;
-
-  while (i < n) {
-    chunks.push(arr.slice(i, i += len));
-  }
-
-  return chunks;
-         */
-      return chunk(this.musics, 4)
-    },
   },
 
   data() {
@@ -92,20 +73,9 @@ export default {
   },
 
   methods: {
-    getClass(videos) {
-      if (videos.length == 1) {
-        return 'is-6 is-offset-3';
+      getClass(video) {
+          return video.big == true ? 'big' : 'small';
       }
-      else if (videos.length == 2) {
-        return 'is-6';
-      }
-      else if (videos.length == 3) {
-        return 'is-4';
-      }
-      else if (videos.length == 4) {
-        return 'is-3';
-      }
-    }
   }
 
 }

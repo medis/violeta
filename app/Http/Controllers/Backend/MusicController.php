@@ -69,7 +69,8 @@ class MusicController extends Controller
             'source' => $code,
             'type' => $request->type,
             'featured' => $request->get('featured') ? true : false,
-            'weight' => $request->get('weight')
+            'weight' => $request->get('weight'),
+            'big' => $request->get('big') ? true : false,
         ]);
 
         return redirect()->route('backend.music.index')->with('status', 'Song created.');
@@ -115,6 +116,7 @@ class MusicController extends Controller
         $music->featured = $request->get('featured') ? true : false;
         $music->enabled = $request->get('enabled') ? true : false;
         $music->weight = $request->weight;
+        $music->big = $request->get('big') ? true : false;
         $music->save();
 
         return redirect()->route('backend.music.index')->with('status', 'Song updated.');

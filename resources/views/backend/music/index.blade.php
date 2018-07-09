@@ -23,6 +23,7 @@
                 <th class="border-b-2">Type</th>
                 <th class="border-b-2">Link</th>
                 <th class="border-b-2">Featured</th>
+                <th class="border-b-2">Big</th>
                 <th class="border-b-2">Enabled</th>
                 <th class="border-b-2">Created at</th>
                 <th class="border-b-2">Actions</th>
@@ -36,6 +37,7 @@
                     <td>{{ $song->type }}</td>
                     <td><a href="{{ $song->getLink() }}" class="no-underline" target="_blank">@</a></td>
                     <td>{!! $song->featured ? '&#10003;' : '&#x2717;' !!}</td>
+                    <td>{!! $song->big ? '&#10003;' : '&#x2717;' !!}</td>
                     <td>{!! $song->enabled ? '&#10003;' : '&#x2717;' !!}</td>
                     <td>{{ $song->created_at }}</td>
                     <td><a href="{{ $song->url->edit }}" class="btn btn-default" role="button"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Edit</a></td>

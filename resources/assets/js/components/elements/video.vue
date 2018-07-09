@@ -8,16 +8,10 @@
           <img :src="getUrl()" />
           <div class="bg"></div>
           <span class="icon play is-large"><i class="fa fa-play-circle-o" aria-hidden="true"></i></span>
+          <p class="title">{{ this.data.title }}</p>
         </a>
       </div>
-
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-            <p class="title is-5">{{ this.data.title }}</p>
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div>
 

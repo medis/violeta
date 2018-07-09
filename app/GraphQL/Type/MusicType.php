@@ -35,6 +35,10 @@ class MusicType extends GraphQLType
                 'type' => Type::nonNull(Type::boolean()),
                 'description' => 'Song is featured'
             ],
+            'big' => [
+                'type' => Type::nonNull(Type::boolean()),
+                'description' => 'Song is supposed to show as big in the list'
+            ],
             'enabled' => [
                 'type' => Type::boolean(),
                 'description' => 'Whether radio is enabled'
