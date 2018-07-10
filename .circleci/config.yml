@@ -24,7 +24,7 @@ jobs:
           key: v1-dependencies-{{ checksum "composer.json" }}
 
       # Add encryption key
-      - run php artisan key:generate
-      
+      - run: php artisan key:generate
+
       # run tests!
       - run: vendor/bin/phpunit
