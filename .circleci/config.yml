@@ -2,7 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.2-apache-node-browsers
+      - image: circleci/php:7.2-browsers
+
+    working_directory: ~
+
     steps:
       - checkout
       - run: echo "hello world"
+
+      # run tests!
+      - run: phpunit
