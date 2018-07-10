@@ -9,6 +9,9 @@ jobs:
     steps:
       - checkout
 
+      - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo zip
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -23,8 +26,9 @@ jobs:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
 
-      # Add encryption key
-      - run: php artisan key:generate
+      # prepare the database
+      - run: touch storage/testing.sqlite
+      - run: php artisan migrate --env=testing --database=sqlite_testing --force
 
       # run tests!
       - run: vendor/bin/phpunit
