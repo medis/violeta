@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/medis/violeta/tree/master.svg?style=svg)](https://circleci.com/gh/medis/violeta/tree/master)
+
 # VioletaSkya site
 
 https://violetaskya.com
