@@ -64,7 +64,7 @@ class MusicController extends Controller
 
         $code = $this->music->parseCode($request->source);
 
-        $this->music->create([
+        $song = $this->music->create([
             'title' => $request->title,
             'source' => $code,
             'type' => $request->type,
@@ -72,6 +72,10 @@ class MusicController extends Controller
             'weight' => $request->get('weight'),
             'big' => $request->get('big') ? true : false,
         ]);
+
+        if ($this->request->wantsJson()) {
+            return $song;
+        }
 
         return redirect()->route('backend.music.index')->with('status', 'Song created.');
     }
@@ -118,6 +122,10 @@ class MusicController extends Controller
         $music->weight = $request->weight;
         $music->big = $request->get('big') ? true : false;
         $music->save();
+
+        if ($this->request->wantsJson()) {
+            return $music;
+        }
 
         return redirect()->route('backend.music.index')->with('status', 'Song updated.');
     }
