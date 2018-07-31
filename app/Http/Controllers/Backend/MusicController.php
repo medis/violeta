@@ -56,12 +56,6 @@ class MusicController extends Controller
      */
     public function store(StoreMusic $request)
     {
-        if ($request->get('featured')) {
-            // This song needs to be featured.
-            // Unfeature any fratured music.
-            $this->music->unfeatureMusic();
-        }
-
         $code = $this->music->parseCode($request->source);
 
         $song = $this->music->create([
@@ -106,12 +100,6 @@ class MusicController extends Controller
      */
     public function update(StoreMusic $request, Music $music)
     {
-        if ($request->get('featured')) {
-            // This music needs to be featured.
-            // Unfeature currect one.
-            $this->music->unfeatureMusic();
-        }
-
         $code = $this->music->parseCode($request->source);
 
         $music->title = $request->title;

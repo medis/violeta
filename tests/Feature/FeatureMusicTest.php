@@ -43,4 +43,14 @@ class FeatureMusicTest extends TestCase
 
         $this->assertEquals(1, Music::where('featured', 1)->count());
     }
+
+    /** @test */
+    public function only_one_song_can_be_published_at_a_time_direct()
+    {
+        $this->signIn();
+
+        create('App\Music', ['featured' => 1], 2);
+
+        $this->assertEquals(1, Music::where('featured', 1)->count());
+    }
 }

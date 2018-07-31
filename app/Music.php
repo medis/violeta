@@ -10,7 +10,7 @@ use medis\Sortable\SortableTrait;
 
 class Music extends BaseModel implements Sortable
 {
-    use SortableTrait;
+    use SortableTrait, FeaturedTrait;
 
     public $sortable = [
         'order_column' => 'weight'
@@ -31,14 +31,6 @@ class Music extends BaseModel implements Sortable
      */
     public function getTypes() {
         return self::$types;
-    }
-
-    public function unfeatureMusic() {
-        $music = Music::where('featured', 1)->first();
-        if (!empty($music)) {
-            $music->featured = false;
-            $music->save();
-        }
     }
 
     /**
