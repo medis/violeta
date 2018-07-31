@@ -53,4 +53,28 @@ class FeatureMusicTest extends TestCase
 
         $this->assertEquals(1, Music::where('featured', 1)->count());
     }
+
+    /** @test */
+    public function anonymous_cannot_store_or_update_music()
+    {
+        $song = make('App\Music');
+        $this->postJson($song->url->store, $song->toArray())
+            ->assertStatus(401);
+
+        // Sanity check.
+        $this->assertEquals(0, Music::all()->count());
+
+        // Check updating.
+        $song = create('App\Music');
+        $payload = $song->toArray();
+        // Try to feature as anonymous.
+        $payload['featured'] = 1;
+
+        $this->putJson($song->url->update, $payload)
+            ->assertStatus(401);
+
+        // Sanity check.
+        $this->assertEquals(0, Music::where('featured', 1)->count());
+
+    }
 }
