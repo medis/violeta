@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  Vue.component('SingleVideo', require('../elements/video.vue'));
+  Vue.component('SingleVideo', require('./video.vue'));
 
   export default {
     props: ['dataFeaturedSong'],
