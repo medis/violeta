@@ -1,7 +1,10 @@
 {
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -12,9 +15,10 @@
         "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
+        "medis/Sortable": "dev-master",
+        "medis/violetaskya-frontend": "dev-master",
         "spatie/laravel-fractal": "^5.2",
-        "spatie/laravel-newsletter": "^4.1",
-        "medis/Sortable": "dev-master"
+        "spatie/laravel-newsletter": "^4.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -35,7 +39,9 @@
         "psr-4": {
             "Tests\\": "tests/"
         },
-        "files": ["tests/utilities/functions.php"]
+        "files": [
+            "tests/utilities/functions.php"
+        ]
     },
     "scripts": {
         "post-root-package-install": [
@@ -64,6 +70,10 @@
         {
             "type": "path",
             "url": "./packages/medis/Sortable"
+        },
+        {
+            "type": "path",
+            "url": "../packages/violetaskya-frontend"
         }
     ]
 }

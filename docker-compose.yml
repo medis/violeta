@@ -10,6 +10,7 @@ services:
       - .docker.env
     volumes:
       - .:/var/www/html
+      - ../packages:/var/www/packages
     networks:
       - app-tier
     ports:
