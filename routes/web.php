@@ -25,6 +25,3 @@ Route::middleware(['auth','web'])
     Route::resource('show', 'ShowsController');
     Route::resource('text', 'TextsController', ['only' => ['edit', 'index', 'update']]);
 });
-
-// Point all non api links to SPA entry point.
-// Route::get('/{vue?}', 'HomeController@index')->where('vue', '^(?!.*api).*$[\/\w\.-]*');

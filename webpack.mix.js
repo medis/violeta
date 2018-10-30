@@ -11,8 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css')
+mix
     .postCss('resources/css/backend.css', 'public/css')
     .options({
         postCss: [
@@ -20,14 +19,3 @@ mix.js('resources/js/app.js', 'public/js')
         ]
     })
     .version();
-
-mix.webpackConfig({
-    module: {
-        rules: [
-            {
-                test: /\.(gql|graphql)$/,
-                loader: 'graphql-tag/loader'
-            }
-        ]
-    }
-});

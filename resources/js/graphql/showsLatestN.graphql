@@ -1,8 +1,0 @@
-query latestNShowsQuery ($num: Int!) {
-	shows (first: $num) {
-		id
-		venue
-		address
-		date
-	}
-}

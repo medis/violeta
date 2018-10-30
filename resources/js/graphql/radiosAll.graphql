@@ -1,7 +1,0 @@
-query allRadiosQuery {
-	radios {
-		id
-		title
-		link
-	}
-}
