@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e75ebf477e1e1d0d0577f4d566b51ba7",
+    "content-hash": "4521ad2cce68a4b5fdd23e17840cfcea",
     "packages": [
         {
             "name": "components/rubaxa-sortable",
@@ -1438,16 +1438,16 @@
         },
         {
             "name": "medis/violetaskya-frontend",
-            "version": "0.0.1",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/medis/violetaskya-frontend.git",
-                "reference": "186d456b1c030028b2e484161c6b0873cb46a43f"
+                "reference": "df15887d72b1c6aca5128f9de453f7175faec88e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/medis/violetaskya-frontend/zipball/186d456b1c030028b2e484161c6b0873cb46a43f",
-                "reference": "186d456b1c030028b2e484161c6b0873cb46a43f",
+                "url": "https://api.github.com/repos/medis/violetaskya-frontend/zipball/df15887d72b1c6aca5128f9de453f7175faec88e",
+                "reference": "df15887d72b1c6aca5128f9de453f7175faec88e",
                 "shasum": ""
             },
             "type": "library",
@@ -1471,7 +1471,7 @@
                 }
             ],
             "description": "SPA application for violetaskya.com",
-            "time": "2018-10-30T21:25:59+00:00"
+            "time": "2018-11-01T21:50:00+00:00"
         },
         {
             "name": "monolog/monolog",
