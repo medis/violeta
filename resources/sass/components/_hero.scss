@@ -31,7 +31,12 @@
 }
 
 .hero.is-primary {
-  background-color: $dark;
+  background-image: url(/images/short.jpg);
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  position: relative;
 }
 
 .hero {
