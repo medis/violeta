@@ -40,3 +40,9 @@ after('deploy:failed', 'deploy:unlock');
 // Migrate database before symlink new release.
 
 // before('deploy:symlink', 'artisan:migrate');
+
+desc("Update frontend package");
+tasl('update-frontend', function() {
+   run('php artisan violetaskya-frontend:update');
+});
+before('deploy:symlink', 'update-frontend');
