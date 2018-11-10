@@ -1,11 +1,10 @@
 version: "3"
 services:
   app:
-    image: audriusbuk/violeta
     container_name: violeta
     build:
-      context: .
-      dockerfile: /docker/app/Dockerfile
+      context: ./docker/app
+      dockerfile: Dockerfile
     env_file:
       - .docker.env
     volumes:
@@ -32,7 +31,6 @@ services:
     build:
       context: ./docker/node
       dockerfile: Dockerfile
-    image: docker/violeta_node
     volumes:
       - .:/var/www/html
     networks:
