@@ -42,7 +42,7 @@ after('deploy:failed', 'deploy:unlock');
 // before('deploy:symlink', 'artisan:migrate');
 
 desc("Update frontend package");
-tasl('update-frontend', function() {
+task('update-frontend', function() {
    run('php artisan violetaskya-frontend:update');
 });
 before('deploy:symlink', 'update-frontend');
