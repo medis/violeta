@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc83d6cf314f4bf3430f09088a5e4458",
+    "content-hash": "17510df23ab65f1fd1f14080fa78af1a",
     "packages": [
         {
             "name": "components/rubaxa-sortable",
@@ -1439,16 +1439,16 @@
         },
         {
             "name": "medis/violetaskya-frontend",
-            "version": "0.3",
+            "version": "0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/medis/violetaskya-frontend.git",
-                "reference": "e7cddae1772d0494d2ce05fb2c3fc02ea3653d85"
+                "reference": "a03b83f1a5443a671aa0905885d9989940c62922"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/medis/violetaskya-frontend/zipball/e7cddae1772d0494d2ce05fb2c3fc02ea3653d85",
-                "reference": "e7cddae1772d0494d2ce05fb2c3fc02ea3653d85",
+                "url": "https://api.github.com/repos/medis/violetaskya-frontend/zipball/a03b83f1a5443a671aa0905885d9989940c62922",
+                "reference": "a03b83f1a5443a671aa0905885d9989940c62922",
                 "shasum": ""
             },
             "require": {
@@ -1479,7 +1479,7 @@
                 }
             ],
             "description": "SPA application for violetaskya.com",
-            "time": "2018-11-10T15:03:26+00:00"
+            "time": "2018-11-13T21:27:52+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1561,16 +1561,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.34.1",
+            "version": "1.34.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "19201b87f7dba2a7cbf1cccdf0e1da13c04ee9c9"
+                "reference": "b9a444d829c9a16735aceca1b173e765745bcc0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/19201b87f7dba2a7cbf1cccdf0e1da13c04ee9c9",
-                "reference": "19201b87f7dba2a7cbf1cccdf0e1da13c04ee9c9",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/b9a444d829c9a16735aceca1b173e765745bcc0c",
+                "reference": "b9a444d829c9a16735aceca1b173e765745bcc0c",
                 "shasum": ""
             },
             "require": {
@@ -1578,8 +1578,11 @@
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2",
                 "phpunit/phpunit": "^4.8.35 || ^5.7"
+            },
+            "suggest": {
+                "friendsofphp/php-cs-fixer": "Needed for the `composer phpcs` command. Allow to automatically fix code style.",
+                "phpstan/phpstan": "Needed for the `composer phpstan` command. Allow to detect potential errors."
             },
             "type": "library",
             "extra": {
@@ -1612,7 +1615,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-11-08T13:33:47+00:00"
+            "time": "2018-11-13T08:26:10+00:00"
         },
         {
             "name": "nikic/php-parser",

@@ -16,7 +16,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "medis/Sortable": "dev-master",
-        "medis/violetaskya-frontend": "0.3",
+        "medis/violetaskya-frontend": "0.4",
         "spatie/laravel-fractal": "^5.2",
         "spatie/laravel-newsletter": "^4.1"
     },
