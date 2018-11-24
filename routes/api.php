@@ -20,4 +20,3 @@ use Illuminate\Http\Request;
 Route::get('/flickr', 'Api\FlickrController@index');
 
 Route::post('/subscribe', 'Api\SubscriptionController@store');
-Route::post('/contact', 'Api\ContactController@store');

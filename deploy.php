@@ -46,3 +46,9 @@ task('update-frontend', function() {
    run('{{bin/php}} {{release_path}}/artisan violetaskya-frontend:update');
 });
 before('deploy:symlink', 'update-frontend');
+
+desc("Publish contact package configuration");
+task('publish-contact', function() {
+    run('{{bin/php}} {{release_path}}/artisan violetaskya-contact:publish');
+});
+before('deploy:symlink', 'publish-contact');
