@@ -17,6 +17,4 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::get('/flickr', 'Api\FlickrController@index');
-
 Route::post('/subscribe', 'Api\SubscriptionController@store');
