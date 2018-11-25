@@ -52,3 +52,9 @@ task('publish-contact', function() {
     run('{{bin/php}} {{release_path}}/artisan violetaskya-contact:publish');
 });
 before('deploy:symlink', 'publish-contact');
+
+desc("Publish photos package configuration");
+task('publish-photos', function() {
+    run('{{bin/php}} {{release_path}}/artisan violetaskya-photos:publish');
+});
+before('deploy:symlink', 'publish-photos');
