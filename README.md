@@ -10,8 +10,13 @@ Backend is styled with Tailwind CSS - Utility-First CSS Framework.
 
 Frontend styled with Bulma CSS Framework.
 
-Backend and frontend are glued together using:
+**Key features**
 
-*current v2:* GraphQL
+*current v3*: on-going migration to modular monolyth:
+- https://github.com/medis/violetaskya-frontend
+- https://github.com/medis/violetaskya-photos
+- https://github.com/medis/violetaskya-contact
+
+v2: GraphQL
 
 Deprecated v1: Vuex
