@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1988611a5a7c31748198ffa432ac9fe8",
+    "content-hash": "7749d3b9e2f7faafe6e6dc01e3dbdb6a",
     "packages": [
         {
             "name": "components/rubaxa-sortable",
@@ -1659,16 +1659,16 @@
         },
         {
             "name": "medis/violetaskya-frontend",
-            "version": "0.6",
+            "version": "1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/medis/violetaskya-frontend.git",
-                "reference": "5a20a897e36ae2f90a5615f199c4c7c2207a0d44"
+                "reference": "818745e5e3ef531209d8de3ac5baf12b0e3083e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/medis/violetaskya-frontend/zipball/5a20a897e36ae2f90a5615f199c4c7c2207a0d44",
-                "reference": "5a20a897e36ae2f90a5615f199c4c7c2207a0d44",
+                "url": "https://api.github.com/repos/medis/violetaskya-frontend/zipball/818745e5e3ef531209d8de3ac5baf12b0e3083e5",
+                "reference": "818745e5e3ef531209d8de3ac5baf12b0e3083e5",
                 "shasum": ""
             },
             "require": {
@@ -1699,7 +1699,7 @@
                 }
             ],
             "description": "SPA application for violetaskya.com",
-            "time": "2018-12-28T17:37:14+00:00"
+            "time": "2019-01-06T15:55:48+00:00"
         },
         {
             "name": "medis/violetaskya-photos",
@@ -3879,16 +3879,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.5.1",
+            "version": "v2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e"
+                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/cfd5dc225767ca154853752abc93aeec040fcf36",
+                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36",
                 "shasum": ""
             },
             "require": {
@@ -3925,7 +3925,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-07-29T20:33:41+00:00"
+            "time": "2018-10-30T17:29:25+00:00"
         },
         {
             "name": "webonyx/graphql-php",

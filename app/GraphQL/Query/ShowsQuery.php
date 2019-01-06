@@ -3,6 +3,7 @@
 namespace App\GraphQL\Query;
 
 use App\GraphQL\Type\PaginationType;
+use Carbon\Carbon;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
@@ -36,6 +37,11 @@ class ShowsQuery extends Query
                 'name' => 'limit',
                 'type' => Type::int(),
                 'description' => 'Limit the items per page',
+            ],
+            'upcoming' => [
+                'name' => 'upcoming',
+                'type' => Type::boolean(),
+                'description' => 'Show only upcoming shows'
             ]
         ];
     }
@@ -46,6 +52,16 @@ class ShowsQuery extends Query
             return Show::take($args['first'])->get();
         }
 
-        return Show::paginate($args['limit'] ?? 20, ['*'], 'page', $args['page'] ?? 0);
+        if (isset($args['upcoming'])) {
+
+            if (isset($args['limit']) && isset($args['page'])) {
+                return Show::whereDate('date', '>=', Carbon::now('Europe/London'))
+                            ->paginate($args['limit'] ?? 20, ['*'], 'page', $args['page'] ?? 0);
+            }
+
+            return Show::whereDate('date', '>=', Carbon::now('Europe/London'));
+        }
+
+        return Show::orderBy('date', 'desc')->paginate($args['limit'] ?? 20, ['*'], 'page', $args['page'] ?? 0);
     }
 }
