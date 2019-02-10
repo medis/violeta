@@ -16,7 +16,7 @@
         "laravelcollective/html": "^5.4.0",
         "medis/Sortable": "dev-master",
         "medis/violetaskya-contact": "0.4",
-        "medis/violetaskya-frontend": "1.1",
+        "medis/violetaskya-frontend": "1.2",
         "medis/violetaskya-photos": "0.1",
         "spatie/laravel-fractal": "^5.2",
         "spatie/laravel-newsletter": "^4.1"
