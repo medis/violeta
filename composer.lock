@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7092568d560f395dc2b0e53d352728e2",
+    "content-hash": "1b39506cb1cf3e3adcb39e59db79754f",
     "packages": [
         {
             "name": "components/rubaxa-sortable",
@@ -1662,16 +1662,16 @@
         },
         {
             "name": "medis/violetaskya-frontend",
-            "version": "1.2",
+            "version": "1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/medis/violetaskya-frontend.git",
-                "reference": "e3f005aea8c6c997472d32795f86cc40778465eb"
+                "reference": "a3ef4ab0cc3d56942bf986b43cd77adda981dfaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/medis/violetaskya-frontend/zipball/e3f005aea8c6c997472d32795f86cc40778465eb",
-                "reference": "e3f005aea8c6c997472d32795f86cc40778465eb",
+                "url": "https://api.github.com/repos/medis/violetaskya-frontend/zipball/a3ef4ab0cc3d56942bf986b43cd77adda981dfaa",
+                "reference": "a3ef4ab0cc3d56942bf986b43cd77adda981dfaa",
                 "shasum": ""
             },
             "require": {
@@ -1702,7 +1702,7 @@
                 }
             ],
             "description": "SPA application for violetaskya.com",
-            "time": "2019-02-10T17:42:25+00:00"
+            "time": "2019-02-10T18:04:48+00:00"
         },
         {
             "name": "medis/violetaskya-photos",
