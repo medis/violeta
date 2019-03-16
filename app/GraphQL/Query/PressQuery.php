@@ -38,6 +38,6 @@ class PressQuery extends Query
 
     public function resolve($root, $args)
     {
-        return Press::paginate($args['limit'] ?? 20, ['*'], 'page', $args['page'] ?? 0);
+        return Press::orderBy('date', 'desc')->paginate($args['limit'] ?? 20, ['*'], 'page', $args['page'] ?? 0);
     }
 }
